@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.UserMapper">
+
+    <sql id="selectYhUser">
+    select * from yh_user
+    </sql>
+    <insert id="addUser">
+        insert into yh_user (yh_yhbh,yh_password,yh_email)
+        values(#{user.yh_yhbh},#{user.yh_password},#{user.yh_email})
+    </insert>
+    <select id="selectYhbh" resultType="integer" parameterType="string">
+        select * from yh_user
+        where yh_yhbh =#{yhbh}
+    </select>
+    <select id="selectEmail" resultType="integer" parameterType="string">
+       select * from yh_user
+        where yh_email =#{email}
+    </select>
+    <select id="getUser" resultType="integer">
+        <include refid="selectYhUser"/>
+        <where>
+        <choose>
+            <when test="username !=null">
+                (
+                yh_yhbh =#{username}
+                or yh_email=#{username}
+                )
+                and
+                yh_password =#{password}
+            </when>
+        </choose>
+        </where>
+    </select>
+
+    <insert id="addLoginLog">
+        insert into log_login (login_user,login_action,login_status,login_address)
+        values (#{loginLog.login_user},#{loginLog.login_action},#{loginLog.login_status},#{loginLog.login_address})
+    </insert>
+</mapper>

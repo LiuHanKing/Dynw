@@ -1,0 +1,35 @@
+.user_div{
+width:auto;
+margin-top: 5%;
+margin-left: 33%;
+padding: 10px;
+height: auto;
+background-color: rgba(0, 0, 0, 0);
+}
+.login_text{
+width: 200px;
+}
+#sendEmailCode{
+width: 100px;
+}
+#user_title{
+ font-family: 仿宋;
+  font-size: 30px;
+}
+.user_tr{
+text-align: center;
+}
+.user_cont{
+width:72px;
+}
+#GoogleCode{
+position:relative;
+top:5px;
+}
+#msg_div{
+font-size: 20px;
+color:red;
+position:absolute;
+left:64%;
+top:80px
+}
