@@ -50,7 +50,7 @@ public class SendEmail {
             msg.setFrom(sendaddress);
 
             //主题
-            String emailSubject="Liuhanking验证码邮件";
+            String emailSubject="Dynw验证码邮件";
             //String emailSubject=emailTemp.getEmailSubject();
             msg.setSubject(emailSubject);
 

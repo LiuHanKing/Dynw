@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="comm.jsp" %>
+    <%@include file="comm/comm.jsp" %>
     <title>注册页面</title>
     <script type="text/javascript" src="source/js/register.js"></script>
 </head>

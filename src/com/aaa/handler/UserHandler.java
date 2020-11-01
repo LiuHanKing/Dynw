@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import sun.misc.BASE64Decoder;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Map;
 
 
 /*
@@ -85,7 +83,7 @@ public class UserHandler {
         }
         model.addAttribute("messg", "用户添加失败");
         System.out.println("-------添加用户------");
-        return "info";
+        return "user/logout";
     }
 
     //发送验证码，并记录发送邮件记录
@@ -115,26 +113,36 @@ public class UserHandler {
     @RequestMapping(value = "/checkCode", method = RequestMethod.POST)
     public String checkEmaiCode(Model model, String email,String yhbh, String password,HttpServletRequest request) {
         System.out.println("-------确认邮件验证码------");
-        System.out.println(email);
         HttpSession session = request.getSession();
         String code = (String) session.getAttribute("yzm");
-        System.out.println(code);
-        String yzm = request.getParameter("yzm");
+        System.out.println("验证码为"+code);
+        //获取的验证码
+        String yzm = (request.getParameter("yzm")).trim();
         System.out.println(yzm);
-        User user=new User();
-        if (yzm.equals(code)) {
-            model.addAttribute("messg", "验证码正确");
-            //验证码使用之后，把session存储的验证码移出
-            session.removeAttribute("yzm");
-            user.setYh_yhbh(yhbh);
-            user.setYh_email(email);
-            user.setYh_password(password);
-            userService.addUser(user);
-            System.out.println(yzm);
-            return "login";
+        Integer y= userService.selectYhbh(yhbh);
+        System.out.println("得到的email"+email);
+        Integer e= userService.selectEmail(email);
+        //判断用户编号是否可用
+        if (y == null&&e==null) {
+            User user=new User();
+            if (yzm.equals(code)) {
+                model.addAttribute("messg", "验证码正确");
+                //验证码使用之后，把session存储的验证码移出
+                session.removeAttribute("yzm");
+                user.setYh_yhbh(yhbh);
+                user.setYh_email(email);
+                user.setYh_password(password);
+                userService.addUser(user);
+                System.out.println(yzm);
+                return "login";
+            }else{
+                session.removeAttribute("yzm");
+                model.addAttribute("messg", "验证码不正确");
+                return "register";
+            }
         }
         session.removeAttribute("yzm");
-        model.addAttribute("messg", "验证码不正确");
+        model.addAttribute("messg", "用户编号或邮箱地址不可用");
         System.out.println("-------确认邮件验证码------");
         return "register";
     }
@@ -167,7 +175,7 @@ public class UserHandler {
                 loginLog.setLogin_status(loginstatu);
                 boolean b=userService.addLoginLog(loginLog);
                 System.out.println(b);
-                return "info";
+                return "user/logout";
             }else{
                 loginstatu="1";
             }
@@ -177,6 +185,7 @@ public class UserHandler {
             System.out.println(b);
         } else {
             System.out.println("验证码错误");
+            model.addAttribute("messg", "验证码错误");
 
         }
         System.out.println("-------验证用户登陆------");
