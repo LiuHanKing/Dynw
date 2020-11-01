@@ -16,10 +16,10 @@ public class SendEmail {
         //EmailTemp emailTemp =UserHandler.getEmailTempById();
 
         // 发件人电子邮箱
-        String fromEmail = "test@liuhanking.xyz";
+        String fromEmail = "dynw@liuhanking.xyz";
         //String fromEmail =emailTemp.getFromEmail();
         //发件人邮箱密码
-        String fromEmailPassword="test";
+        String fromEmailPassword="dynw";
         //String fromEmailPassword=emailTemp.getFromEmailPassword();
         // 指定发送邮件的主机为 liuhanking.xyz
         String host = "39.105.200.254";  //邮件服务器
