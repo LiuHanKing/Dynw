@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.AreaMapper">
+<resultMap id="areaArray" type="com.aaa.model.Area">
+    <result column="codeid" property="codeid" />
+    <result column="parentid" property="parentid"/>
+    <result column="cityName" property="cityName"/>
+</resultMap>
+    <select id="getProvince" resultMap="areaArray">
+        select codeid,parentid,cityName from area_data where length(codeid)=2
+    </select>
+    <select id="getcity"  resultMap="areaArray">
+        select codeid,parentid,cityName from area_data where length(codeid)=4 and parentid=#{code}
+    </select>
+    <select id="getCounties"  resultMap="areaArray">
+        select codeid,parentid,cityName from area_data where length(codeid)=6 and parentid=#{code}
+    </select>
+</mapper>
