@@ -18,6 +18,7 @@ $(function () {
                         data: {"yhbh": yhbh},
                         async: false,
                         success: function (data) {
+                            console.log(data)
                             result_yhbh =data
                         },
                         error: function (data) {

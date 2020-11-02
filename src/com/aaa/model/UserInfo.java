@@ -1,11 +1,15 @@
 package com.aaa.model;
 
+import org.springframework.stereotype.Component;
+
+import javax.print.attribute.standard.Chromaticity;
 import java.util.Date;
 
 /*
 @author lzw
 @create 2020/11/1 20:51
 */
+@Component
 public class UserInfo {
     private int yh_id;
     private String yh_yhbh;
@@ -14,10 +18,44 @@ public class UserInfo {
     private String province;
     private String city;
     private String counties;
-    private int phoneNumber;
+    private String phoneNumber;
     private String yh_email;
     private String homeAddres;
     private String hobby;
+
+    public UserInfo() {
+    }
+
+    public UserInfo(int yh_id, String yh_yhbh, int gender, Date brithday, String province, String city, String counties, String phoneNumber, String yh_email, String homeAddres, String hobby) {
+        this.yh_id = yh_id;
+        this.yh_yhbh = yh_yhbh;
+        this.gender = gender;
+        this.brithday = brithday;
+        this.province = province;
+        this.city = city;
+        this.counties = counties;
+        this.phoneNumber = phoneNumber;
+        this.yh_email = yh_email;
+        this.homeAddres = homeAddres;
+        this.hobby = hobby;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "yh_id=" + yh_id +
+                ", yh_yhbh='" + yh_yhbh + '\'' +
+                ", gender=" + gender +
+                ", brithday=" + brithday +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", counties='" + counties + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", yh_email='" + yh_email + '\'' +
+                ", homeAddres='" + homeAddres + '\'' +
+                ", hobby='" + hobby + '\'' +
+                '}';
+    }
 
     public int getYh_id() {
         return yh_id;
@@ -75,11 +113,11 @@ public class UserInfo {
         this.counties = counties;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -105,39 +143,5 @@ public class UserInfo {
 
     public void setHobby(String hobby) {
         this.hobby = hobby;
-    }
-
-    public UserInfo() {
-    }
-
-    public UserInfo(int yh_id, String yh_yhbh, int gender, Date brithday, String province, String city, String counties, int phoneNumber, String yh_email, String homeAddres, String hobby) {
-        this.yh_id = yh_id;
-        this.yh_yhbh = yh_yhbh;
-        this.gender = gender;
-        this.brithday = brithday;
-        this.province = province;
-        this.city = city;
-        this.counties = counties;
-        this.phoneNumber = phoneNumber;
-        this.yh_email = yh_email;
-        this.homeAddres = homeAddres;
-        this.hobby = hobby;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "yh_id=" + yh_id +
-                ", yh_yhbh='" + yh_yhbh + '\'' +
-                ", gender=" + gender +
-                ", brithday=" + brithday +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", counties='" + counties + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", yh_email='" + yh_email + '\'' +
-                ", homeAddres='" + homeAddres + '\'' +
-                ", hobby='" + hobby + '\'' +
-                '}';
     }
 }

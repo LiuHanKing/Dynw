@@ -49,7 +49,7 @@ public class UserHandler {
             System.out.println("-------确认用户编号是否可使用------");
             return 0;
         }
-        //此用户编号可以注册
+        //此用户编号不可以注册
         return 2;
     }
 

@@ -1,13 +1,13 @@
 package com.aaa.handler;
 
 import com.aaa.model.Area;
+import com.aaa.model.UserInfo;
 import com.aaa.service.AreaService;
+import com.aaa.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,13 +19,25 @@ import java.util.List;
 public class UserInfoHandler {
     @Autowired
     private AreaService areaService;
-    //查询省份
-    @RequestMapping(value = "getProvince",method = RequestMethod.GET)
+    @Autowired
+    private UserInfoService userInfoService;
+    //查询省份并且查询个人信息
+   @RequestMapping(value = "getProvince",method = RequestMethod.GET)
     public String getProvince(Model model) {
+        List<Area> provinceList=areaService.getProvince();
+        model.addAttribute("provinceList",provinceList);
+        return "user/area";
+    }
+    //查询省份并且查询个人信息
+    @RequestMapping(value = "getInfo",method = RequestMethod.GET)
+    public String getInfo(Model model,@RequestParam("userid")String userid) {
+        UserInfo userInfo1=userInfoService.getUserInfo(userid);
+        model.addAttribute("userInfo",userInfo1);
         List<Area> provinceList=areaService.getProvince();
         model.addAttribute("provinceList",provinceList);
         return "user/user_info";
     }
+
     //查询地市
     @RequestMapping(value = "getCity",method = RequestMethod.GET)
     public @ResponseBody List<Area> getCitys(Model model,int code) {
@@ -40,4 +52,12 @@ public class UserInfoHandler {
         //model.addAttribute("countiesList",countiesList);
         return countiesList;
     }
+
+    //查询用户的个人信息
+    @RequestMapping(value = "getUserInfo",method = RequestMethod.GET)
+    public String getUserInfo(Model model, UserInfo userInfo) {
+
+        return "user/user_info";
+    }
+
 }
