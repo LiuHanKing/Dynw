@@ -53,10 +53,11 @@
 <body>
 <div>
     <form>
-        省份
+
+        <label>省份</label>
         <select id="pro">
             <option>
-                -----------------
+                ----------------------
             </option>
             <c:forEach items="${provinceList}" var="pro">
                 <option value="${pro.codeid}">
@@ -64,16 +65,18 @@
                 </option>
             </c:forEach>
         </select>
-        地市
+
+        <label>地市</label>
         <select id="city">
             <option>
-                -----------------
+                ----------------------
             </option>
         </select>
-        县区
+
+        <label>县区</label>
         <select id="counties">
             <option>
-                -----------------
+                ----------------------
             </option>
         </select>
     </form>

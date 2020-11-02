@@ -17,38 +17,7 @@ public class UserInfo {
     private int phoneNumber;
     private String yh_email;
     private String homeAddres;
-
-    public UserInfo() {
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "yh_id=" + yh_id +
-                ", yh_yhbh='" + yh_yhbh + '\'' +
-                ", gender=" + gender +
-                ", brithday=" + brithday +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", counties='" + counties + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", yh_email='" + yh_email + '\'' +
-                ", homeAddres='" + homeAddres + '\'' +
-                '}';
-    }
-
-    public UserInfo(int yh_id, String yh_yhbh, int gender, Date brithday, String province, String city, String counties, int phoneNumber, String yh_email, String homeAddres) {
-        this.yh_id = yh_id;
-        this.yh_yhbh = yh_yhbh;
-        this.gender = gender;
-        this.brithday = brithday;
-        this.province = province;
-        this.city = city;
-        this.counties = counties;
-        this.phoneNumber = phoneNumber;
-        this.yh_email = yh_email;
-        this.homeAddres = homeAddres;
-    }
+    private String hobby;
 
     public int getYh_id() {
         return yh_id;
@@ -128,5 +97,47 @@ public class UserInfo {
 
     public void setHomeAddres(String homeAddres) {
         this.homeAddres = homeAddres;
+    }
+
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public UserInfo() {
+    }
+
+    public UserInfo(int yh_id, String yh_yhbh, int gender, Date brithday, String province, String city, String counties, int phoneNumber, String yh_email, String homeAddres, String hobby) {
+        this.yh_id = yh_id;
+        this.yh_yhbh = yh_yhbh;
+        this.gender = gender;
+        this.brithday = brithday;
+        this.province = province;
+        this.city = city;
+        this.counties = counties;
+        this.phoneNumber = phoneNumber;
+        this.yh_email = yh_email;
+        this.homeAddres = homeAddres;
+        this.hobby = hobby;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "yh_id=" + yh_id +
+                ", yh_yhbh='" + yh_yhbh + '\'' +
+                ", gender=" + gender +
+                ", brithday=" + brithday +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", counties='" + counties + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", yh_email='" + yh_email + '\'' +
+                ", homeAddres='" + homeAddres + '\'' +
+                ", hobby='" + hobby + '\'' +
+                '}';
     }
 }
