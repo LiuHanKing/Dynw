@@ -21,4 +21,6 @@ public interface UserService {
     public User getUser(@Param("username") String  username, @Param("password") String password);
     //插入登录日志
     public boolean addLoginLog(LoginLog loginLog);
+    //修改用户密码
+    public boolean updateUser(String username,String password);
 }

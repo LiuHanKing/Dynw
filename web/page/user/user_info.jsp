@@ -134,19 +134,19 @@
         <form id="userinfo_form">
             <input id="userid" name="userid" value="${sessionScope.userid}" hidden/>
             <input id="yh_id" name="yh_id" value="${userInfo.yh_id}" hidden/>
-            <label>用户编号</label>
+            <label>用户编号:</label>
             <input type="text" value="${userInfo.yhbh}" id="yhbh" name="yhbh" disabled="true"/><br><br>
-            <label>性别</label>
+            <label>性别:</label>
             <select value="${userInfo.gender}" id="gender" name="gender">
                 <option value='1' <c:if test="${userInfo.gender ==1}">selected</c:if>>男</option>
                 <option value='  ' <c:if test="${userInfo.gender ==0}">selected</c:if>>女</option>
             </select><br><br>
-            <label>出生日期</label>
+            <label>出生日期:</label>
             <input type="datetime-local" name="brithday"
                    value="<fmt:formatDate  value='${userInfo.brithday}' pattern='yyyy-MM-dd' />"
                    id="brithday" placeholder="yyyy-MM-dd"/>
             <br><br>
-            <label>省份</label>
+            <label>省份:</label>
             <select id="pro" name="province" class="input_width">
                 <c:forEach items="${provinceList}" var="pro">
                     <option value="${pro.codeid}"
@@ -155,23 +155,23 @@
                     </option>
                 </c:forEach>
             </select>
-            <label>地市</label>
+            <label>地市:</label>
             <select id="city" name="city" class="input_width">
             </select>
 
-            <label>县区</label>
+            <label>县区:</label>
             <select id="counties" name="counties" class="input_width">
             </select><br><br>
-            <label>手机号</label>
+            <label>手机号:</label>
             <input type="text" value="${userInfo.phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="11位数字"/>
             <br><br>
-            <label>邮箱地址</label>
+            <label>邮箱地址:</label>
             <input type="email" value="${userInfo.email}" id="email" readonly="true" name="email"
                    placeholder="xxx@XXX.com"/> <br><br>
-            <label>家庭住址</label>
+            <label>家庭住址:</label>
             <input type="text" value="${userInfo.homeAddres}" id="homeAddres" name="homeAddres" placeholder="大同胡同"/>
             <br><br>
-            <label>爱好</label>
+            <label>爱好:</label>
             <input type="text" value="${userInfo.hobby}" name="hobby" id="hobby" placeholder="多个爱好中间中;分隔"/> <br><br>
             <label><input type="reset" value="重置" id="re_input"/></label>
             <label><input type="submit" value="确认修改" id="sub_input"/> </label>

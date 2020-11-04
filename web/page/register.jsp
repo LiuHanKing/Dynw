@@ -11,20 +11,19 @@
     <%@include file="comm/comm.jsp" %>
     <title>注册页面</title>
     <script type="text/javascript" src="source/js/register.js"></script>
+    <link rel="stylesheet" href="source/css/head_sigin.css">
 </head>
 <body>
 <div>
-    <a href="page/login.jsp">登陆</a>
+    <div id="login_head">
+        <h1>欢迎登陆</h1>
+        <a href="page/login.jsp" id="login_head_sigin">登陆</a>
+    </div>
+    <hr>
 </div>
 <div class="user_div">
     <form action="checkCode" method="POST">
         <table>
-
-            <tr class="user_tr">
-                <td colspan="3" id="user_title">
-                    欢迎注册
-                </td>
-            </tr>
             <tr>
                 <td class="user_cont">
                     用户编号
@@ -47,7 +46,7 @@
                     密码
                 </td>
                 <td colspan="2">
-                    <input type="password" class="login_text" name="password" id="password"/>
+                    <input type="password" class="login_text" name="password" id="password" placeholder="6-18位任意字符"/>
                 </td>
             </tr>
             <tr>
@@ -83,5 +82,6 @@
     </span>
 
 </div>
+<%@include file="comm/footer.jsp" %>
 </body>
 </html>

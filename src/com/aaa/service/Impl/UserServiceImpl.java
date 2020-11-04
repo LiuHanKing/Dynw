@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
     public boolean addLoginLog(LoginLog loginLog) {
         return userMapper.addLoginLog(loginLog);
     }
+
+    @Override
+    public boolean updateUser(String username, String password) {
+        return userMapper.updateUser(username,password);
+    }
 }

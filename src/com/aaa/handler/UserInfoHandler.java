@@ -59,13 +59,6 @@ public class UserInfoHandler {
     public @ResponseBody boolean updateInfo(Model model, UserInfo userInfo) {
         System.out.println(userInfo+"+++++++++++++++++++++");
        boolean change=userInfoService.updateUserInfo(userInfo);
-/*       String message;
-       if(change==true){
-           message= "修改成功";
-           model.addAttribute("messg","修改成功");
-       }
-        message="修改失败";
-        model.addAttribute("messg","修改失败");*/
         return change;
     }
 

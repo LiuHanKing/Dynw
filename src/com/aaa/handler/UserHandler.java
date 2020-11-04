@@ -1,10 +1,7 @@
 package com.aaa.handler;
 
 
-import com.aaa.model.Email;
-import com.aaa.model.EmailTemp;
-import com.aaa.model.LoginLog;
-import com.aaa.model.User;
+import com.aaa.model.*;
 import com.aaa.service.EmailService;
 import com.aaa.service.EmailTempService;
 import com.aaa.service.UserService;
@@ -222,6 +219,24 @@ public class UserHandler {
         return emailTemp;
     };
 
+    //检查用户的旧密码是否正确
+    @RequestMapping(value = "checkoldpass",method = RequestMethod.POST)
+    public @ResponseBody boolean checkoldpass(Model model, String username,String password) {
+        System.out.println("++++++++++校验旧密码+++++++++++");
+        User user=userService.getUser(username,password);
+        if(user!=null){
+            return true;
+        }
+        return false;
+    }
+
+    //修改用户密码
+    @RequestMapping(value = "changepass",method = RequestMethod.POST)
+    public @ResponseBody boolean changepass(Model model, String username,String password) {
+        System.out.println("++++++++++修改密码+++++++++++");
+        boolean ifchange=userService.updateUser(username,password);
+        return ifchange;
+    }
 
 
 

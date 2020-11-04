@@ -11,6 +11,7 @@
     <%@include file="comm/comm.jsp" %>
     <title>登陆页面</title>
     <script type="text/javascript" src="source/js/login.js"></script>
+    <link rel="stylesheet" href="source/css/head_sigin.css">
     <script type="text/javascript">
         $(function () {
             $("#GoogleCode").click(function () {
@@ -22,16 +23,21 @@
 </head>
 <body>
 <div>
-    <a href="page/register.jsp">注册</a>
+    <div id="login_head">
+        <h1>欢迎登陆</h1>
+        <a href="page/register.jsp" id="login_head_sigin">注册</a>
+    </div>
+    <hr>
 </div>
+
 <div class="user_div">
     <form action="login" method="POST">
         <table>
-            <tr class="user_tr">
-                <td colspan="2" id="user_title">
-                    欢迎登陆
-                </td>
-            </tr>
+            <%--            <tr class="user_tr">
+                            <td colspan="2" id="user_title">
+                                欢迎登陆
+                            </td>
+                        </tr>--%>
             <tr>
                 <td class="user_cont">
                     账号
@@ -71,5 +77,6 @@
 <div id="msg_div">
     <span id="errorMsg">${messg}</span>
 </div>
+<%@include file="comm/footer.jsp" %>
 </body>
 </html>

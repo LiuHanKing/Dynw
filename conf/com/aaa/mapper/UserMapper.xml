@@ -11,6 +11,10 @@
         insert into yh_user (yh_yhbh,yh_password,yh_email)
         values(#{user.yh_yhbh},#{user.yh_password},#{user.yh_email})
     </insert>
+    <update id="updateUser">
+        update yh_user set yh_password=#{param2}
+        where yh_yhbh =#{param1}
+    </update>
     <select id="selectYhbh" resultType="integer" parameterType="string">
         select * from yh_user
         where yh_yhbh =#{yhbh}

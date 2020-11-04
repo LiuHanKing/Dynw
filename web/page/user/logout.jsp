@@ -11,10 +11,22 @@
     <%@include file="../comm/comm.jsp" %>
     <title>Title</title>
     <script type="text/javascript" src="source/js/logout.js"></script>
+    <style>
+        a{
+            text-decoration:none;
+        }
+    </style>
 </head>
 <body>
-${messg}
-<a href="getInfo?userid=${sessionScope.userid}">个人信息</a>
-<a id="logout">注销</a>
+
+<div>
+    ${messg}
+</div>
+<div>
+    <a href="getInfo?userid=${sessionScope.userid}">个人信息</a>
+    <a href="page/user/change_pss.jsp">修改密码</a>
+    <a id="logout">注销</a>
+</div>
+
 </body>
 </html>

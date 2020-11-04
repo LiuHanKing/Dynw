@@ -22,5 +22,7 @@ public interface UserMapper {
 
     //插入登录日志
     public boolean addLoginLog(@Param("loginLog") LoginLog loginLog);
+    //修改用户密码
+    public boolean updateUser(String username,String password);
 
 }

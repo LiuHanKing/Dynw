@@ -1,0 +1,42 @@
+.user_div{
+height:300px;
+}
+#sendEmailCode{
+    width: 100px;
+}
+.login_text{
+    width: 200px;
+}
+#GoogleCode{
+    position:relative;
+    top:5px;
+}
+#msg_div{
+    font-size: 20px;
+    color:red;
+    position:absolute;
+    left:64%;
+    top:80px
+}
+.user_cont{
+    width:72px;
+}
+.user_tr{
+    text-align: center;
+}
+
+/*#user_title{
+    font-family: 仿宋;
+    font-size: 30px;
+}*/
+/*关于登陆界面和注册界面头部*/
+#login_head {
+    text-align: center;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+#login_head_sigin{
+    display: block;
+    text-align:right;
+    text-decoration:none;
+}
