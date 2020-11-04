@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.mapper.UserInfoMapper">
+    <update id="updateUserInfo" parameterType="UserInfo">
+        update yh_info
+        set
+        gender=#{userInfo.gender},
+        brithday=#{userInfo.brithday},
+        province=#{userInfo.province},
+        city=#{userInfo.city},
+        counties=#{userInfo.counties},
+        phoneNumber=#{userInfo.phoneNumber},
+        homeAddres=#{userInfo.homeAddres},
+        hobby=#{userInfo.hobby}
+        where yh_id=#{userInfo.yh_id}
+    </update>
+
+    <select id="getUserInfo" resultType="com.aaa.model.UserInfo">
+        select
+        yh_id,
+        yhbh,
+        gender,
+        brithday,
+        province,
+        city,
+        counties,
+        phoneNumber,
+        email,
+        homeAddres,
+        hobby
+        from yh_info where yh_id=#{userid}
+    </select>
+</mapper>

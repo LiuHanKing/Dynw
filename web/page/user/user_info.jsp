@@ -115,12 +115,10 @@
                             async: false,
                             success: function (data) {
                                 alert("修改成功");
-                               // console.log(data);
-                                $("#message").val(data);
                             },
                             error: function () {
                                 alert("修改失败");
-                                //console.log("传输失败");
+                                console.log("传输失败");
                             }
                         })
                     }
