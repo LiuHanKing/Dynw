@@ -19,7 +19,7 @@
        select * from yh_user
         where yh_email =#{email}
     </select>
-    <select id="getUser" resultType="integer">
+    <select id="getUser" resultType="User">
         <include refid="selectYhUser"/>
         <where>
         <choose>

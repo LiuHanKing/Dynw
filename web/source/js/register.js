@@ -18,7 +18,7 @@ $(function () {
                         data: {"yhbh": yhbh},
                         async: false,
                         success: function (data) {
-                            console.log(data)
+                            //console.log(data)
                             result_yhbh =data
                         },
                         error: function (data) {
@@ -62,7 +62,7 @@ $(function () {
                         async: false,
                         success: function (data) {
                             result_email =data;
-                            console.log(data);
+                            //console.log(data);
                         },
                         error: function () {
                             console.log("传输失败");
@@ -125,7 +125,7 @@ $(function () {
                         data: {"email": email},
                         success: function (data) {
                             $("#errorMsg").html(data);
-                            console.log(data);
+                            //console.log(data);
                         },
                         error: function () {
                             console.log("传输失败");
@@ -173,10 +173,10 @@ $(function () {
             } else {
                 if (repassObj != passObj ) {
                     $("#errorMsg").text("两个密码不一致");
-                    console.log("两个密码不一致");
+                    //console.log("两个密码不一致");
                 } else {
                     $("#errorMsg").text(" ");
-                    console.log("两个密码一致");
+                    //console.log("两个密码一致");
                 }
                 ;
             }

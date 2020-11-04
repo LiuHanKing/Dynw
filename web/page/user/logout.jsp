@@ -10,22 +10,11 @@
 <head>
     <%@include file="../comm/comm.jsp" %>
     <title>Title</title>
+    <script type="text/javascript" src="source/js/logout.js"></script>
 </head>
 <body>
-<script>
-    $(function(){
-        $("#logout").click(function(){
-            var ip= returnCitySN.cip;
-            var str64 = window.btoa(ip);
-            console.log(str64);
-            if(confirm("是否确认退出登陆？")){
-                location.href="logout/"+str64;
-            }
-        })
-
-    })
-</script>
 ${messg}
+<a href="getInfo?userid=${sessionScope.userid}">个人信息</a>
 <a id="logout">注销</a>
 </body>
 </html>

@@ -13,6 +13,9 @@
     <script type="text/javascript" src="source/js/register.js"></script>
 </head>
 <body>
+<div>
+    <a href="page/login.jsp">登陆</a>
+</div>
 <div class="user_div">
     <form action="checkCode" method="POST">
         <table>

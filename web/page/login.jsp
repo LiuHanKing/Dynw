@@ -10,51 +10,20 @@
 <head>
     <%@include file="comm/comm.jsp" %>
     <title>登陆页面</title>
-    <script>
+    <script type="text/javascript" src="source/js/login.js"></script>
+    <script type="text/javascript">
         $(function () {
-            var obj = document.getElementById("ipAddress");
-            obj.value = returnCitySN.cip;
-            //创建用户登陆账号校验
-            $("#username").blur(function(){
-                var usernameObj=$("#username").val();
-                if(usernameObj!=null){
-                    $("#errorMsg").hide();
-                }else{
-                    $("#errorMsg").text("账号不能为空");
-                }
-            });
-            //创建用户登陆密码校验
-            $("#password").blur(function(){
-                var password=$("#password").val();
-                if(password!=null){
-                    $("#errorMsg").hide();
-                }else{
-                    $("#errorMsg").text("密码不能为空");
-                }
-            });
-            $("#login_sub").click(function(){
-                //获取password输入框的值
-                var usernameObj = $("#username").val();
-                //获取password输入框的值
-                var passObj = $("#password").val();
-                if (usernameObj.length == 0||passObj.length == 0) {
-                    $("#errorMsg").text("用户名，密码不能为空");
-                } else {
-                    $("#errorMsg").hide();
-                    return true;
-                };
-
-                return false;
-            });
             $("#GoogleCode").click(function () {
                 this.src = "${basePath}kaptcha.jpg?d" + new Date();
             });
         })
 
     </script>
-
 </head>
 <body>
+<div>
+    <a href="page/register.jsp">注册</a>
+</div>
 <div class="user_div">
     <form action="login" method="POST">
         <table>
@@ -68,7 +37,8 @@
                     账号
                 </td>
                 <td>
-                    <input type="text" class="login_text" name="username" id="username" placeholder="请输入用户编号或者邮箱地址"/><br>
+                    <input type="text" class="login_text" name="username" id="username"
+                           placeholder="请输入用户编号或者邮箱地址"/><br>
                 </td>
             </tr>
             <tr>

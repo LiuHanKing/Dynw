@@ -126,7 +126,7 @@ public class UserHandler {
         if (y == null&&e==null) {
             User user=new User();
             if (yzm.equals(code)) {
-                model.addAttribute("messg", "验证码正确");
+                model.addAttribute("messg", "注册成功");
                 //验证码使用之后，把session存储的验证码移出
                 session.removeAttribute("yzm");
                 user.setYh_yhbh(yhbh);
@@ -161,16 +161,17 @@ public class UserHandler {
             System.out.println("验证码正确----------------");
             System.out.println("ip地址+++++++++++++"+ipAddress);
             HttpSession session = request.getSession();
-            Integer i=userService.getUser(username,password);
+            User user=userService.getUser(username,password);
             String loginAction="login";
             System.out.println(ipAddress);
             LoginLog loginLog=new LoginLog();
             loginLog.setLogin_user(username);
             loginLog.setLogin_action(loginAction);
             loginLog.setLogin_address(ipAddress);
-            if(i!=null){
+            if(user!=null){
                 loginstatu="0";
                 session.setAttribute("username",username);
+                session.setAttribute("userid",user.getYh_id());
                 System.out.println(loginstatu);
                 loginLog.setLogin_status(loginstatu);
                 boolean b=userService.addLoginLog(loginLog);

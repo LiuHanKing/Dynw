@@ -21,23 +21,24 @@ public class UserInfoHandler {
     private AreaService areaService;
     @Autowired
     private UserInfoService userInfoService;
-    //查询省份并且查询个人信息
-   @RequestMapping(value = "getProvince",method = RequestMethod.GET)
-    public String getProvince(Model model) {
-        List<Area> provinceList=areaService.getProvince();
-        model.addAttribute("provinceList",provinceList);
-        return "user/area";
-    }
+
     //查询省份并且查询个人信息
     @RequestMapping(value = "getInfo",method = RequestMethod.GET)
     public String getInfo(Model model,@RequestParam("userid")String userid) {
         UserInfo userInfo1=userInfoService.getUserInfo(userid);
+        System.out.println(userInfo1+"----------------------------------------------------");
         model.addAttribute("userInfo",userInfo1);
         List<Area> provinceList=areaService.getProvince();
         model.addAttribute("provinceList",provinceList);
         return "user/user_info";
     }
-
+    //查询省份
+    @RequestMapping(value = "getProvince",method = RequestMethod.GET)
+    public String getProvince(Model model) {
+        List<Area> provinceList=areaService.getProvince();
+        model.addAttribute("provinceList",provinceList);
+        return "user/area";
+    }
     //查询地市
     @RequestMapping(value = "getCity",method = RequestMethod.GET)
     public @ResponseBody List<Area> getCitys(Model model,int code) {
@@ -53,11 +54,19 @@ public class UserInfoHandler {
         return countiesList;
     }
 
-    //查询用户的个人信息
-    @RequestMapping(value = "getUserInfo",method = RequestMethod.GET)
-    public String getUserInfo(Model model, UserInfo userInfo) {
-
-        return "user/user_info";
+    //修改用户的个人信息
+    @RequestMapping(value = "updateInfo",method = RequestMethod.POST)
+    public @ResponseBody boolean updateInfo(Model model, UserInfo userInfo) {
+        System.out.println(userInfo+"+++++++++++++++++++++");
+       boolean change=userInfoService.updateUserInfo(userInfo);
+/*       String message;
+       if(change==true){
+           message= "修改成功";
+           model.addAttribute("messg","修改成功");
+       }
+        message="修改失败";
+        model.addAttribute("messg","修改失败");*/
+        return change;
     }
 
 }

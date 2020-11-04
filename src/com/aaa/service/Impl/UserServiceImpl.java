@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer getUser(String username, String password) {
+    public User getUser(String username, String password) {
         return userMapper.getUser(username,password);
     }
 

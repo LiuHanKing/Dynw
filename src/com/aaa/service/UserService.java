@@ -18,7 +18,7 @@ public interface UserService {
     //查询此邮箱是否已注册
     public Integer selectEmail(String email);
     //登陆账号查询
-    public Integer getUser(@Param("username") String  username, @Param("password") String password);
+    public User getUser(@Param("username") String  username, @Param("password") String password);
     //插入登录日志
     public boolean addLoginLog(LoginLog loginLog);
 }

@@ -3,6 +3,7 @@ package com.aaa.model;
 import org.springframework.stereotype.Component;
 
 import javax.print.attribute.standard.Chromaticity;
+import java.io.Serializable;
 import java.util.Date;
 
 /*
@@ -10,32 +11,33 @@ import java.util.Date;
 @create 2020/11/1 20:51
 */
 @Component
-public class UserInfo {
+public class UserInfo implements Serializable {
+    public static final long serialVersionUID=87687;
     private int yh_id;
-    private String yh_yhbh;
+    private String yhbh;
     private int gender;
     private Date brithday;
     private String province;
     private String city;
     private String counties;
     private String phoneNumber;
-    private String yh_email;
+    private String email;
     private String homeAddres;
     private String hobby;
 
     public UserInfo() {
     }
 
-    public UserInfo(int yh_id, String yh_yhbh, int gender, Date brithday, String province, String city, String counties, String phoneNumber, String yh_email, String homeAddres, String hobby) {
+    public UserInfo(int yh_id, String yhbh, int gender, Date brithday, String province, String city, String counties, String phoneNumber, String email, String homeAddres, String hobby) {
         this.yh_id = yh_id;
-        this.yh_yhbh = yh_yhbh;
+        this.yhbh = yhbh;
         this.gender = gender;
         this.brithday = brithday;
         this.province = province;
         this.city = city;
         this.counties = counties;
         this.phoneNumber = phoneNumber;
-        this.yh_email = yh_email;
+        this.email = email;
         this.homeAddres = homeAddres;
         this.hobby = hobby;
     }
@@ -44,14 +46,14 @@ public class UserInfo {
     public String toString() {
         return "UserInfo{" +
                 "yh_id=" + yh_id +
-                ", yh_yhbh='" + yh_yhbh + '\'' +
+                ", yhbh='" + yhbh + '\'' +
                 ", gender=" + gender +
                 ", brithday=" + brithday +
                 ", province='" + province + '\'' +
                 ", city='" + city + '\'' +
                 ", counties='" + counties + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", yh_email='" + yh_email + '\'' +
+                ", email='" + email + '\'' +
                 ", homeAddres='" + homeAddres + '\'' +
                 ", hobby='" + hobby + '\'' +
                 '}';
@@ -65,12 +67,12 @@ public class UserInfo {
         this.yh_id = yh_id;
     }
 
-    public String getYh_yhbh() {
-        return yh_yhbh;
+    public String getyhbh() {
+        return yhbh;
     }
 
-    public void setYh_yhbh(String yh_yhbh) {
-        this.yh_yhbh = yh_yhbh;
+    public void setyhbh(String yhbh) {
+        this.yhbh = yhbh;
     }
 
     public int getGender() {
@@ -121,12 +123,12 @@ public class UserInfo {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getYh_email() {
-        return yh_email;
+    public String getemail() {
+        return email;
     }
 
-    public void setYh_email(String yh_email) {
-        this.yh_email = yh_email;
+    public void setemail(String email) {
+        this.email = email;
     }
 
     public String getHomeAddres() {

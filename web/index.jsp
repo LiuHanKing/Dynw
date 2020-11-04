@@ -12,7 +12,7 @@
 </head>
 <body>
 <script type="text/javascript">
-    window.location.href = "page/register.jsp";
+    window.location.href = "page/login.jsp";
 </script>
 </body>
 </html>
