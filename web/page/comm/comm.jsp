@@ -21,5 +21,5 @@
 <link rel="shortcut icon" href="#"/>
 <base href=<%=basePath%>>
 <script type="text/javascript" src="source/js/jquery-3.5.1.min.js"></script>
-<link rel="stylesheet" href="source/css/notesys.css">
+<%--<link rel="stylesheet" href="source/css/notesys.css">--%>
 <script src="http://pv.sohu.com/cityjson?ie=utf-8" type="text/javascript"></script>

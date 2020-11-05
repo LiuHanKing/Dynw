@@ -238,6 +238,21 @@ public class UserHandler {
         return ifchange;
     }
 
+    //重置用户密码
+    @RequestMapping(value = "resetpass",method = RequestMethod.POST)
+    public @ResponseBody boolean resetpass(Model model,String yzm, String email,String password,HttpServletRequest request) {
+        System.out.println("++++++++++重置密码+++++++++++");
+        HttpSession session = request.getSession();
+        String code = (String) session.getAttribute("yzm");
+        String yzmcode=yzm.trim();
+        boolean ifchange=false;
+        if (code.equals(yzmcode)) {
+            ifchange=userService.updateUserByEmail(email,password);
+            System.out.println(ifchange+"----------------------");
+        }
+        return ifchange;
+    }
+
 
 
 }

@@ -23,4 +23,6 @@ public interface UserService {
     public boolean addLoginLog(LoginLog loginLog);
     //修改用户密码
     public boolean updateUser(String username,String password);
+    //根据邮箱地址修改用户密码
+    public boolean updateUserByEmail(String email,String password);
 }

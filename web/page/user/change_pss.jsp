@@ -9,7 +9,8 @@
 <html>
 <head>
     <%@include file="../comm/comm.jsp" %>
-    <title>Title</title>
+    <title>changepass</title>
+    <link rel="stylesheet" href="source/css/user.css"/>
     <script type="text/javascript">
         $(function () {
             $("#oldpassword").on("blur", function () {
@@ -37,22 +38,18 @@
                     alert("旧密码不能为空！！！");
                 }
             });
-            $("#renewpassword").on("blur",function(){
+            $("#renewpassword").on("blur", function () {
                 var ObjOldPass = $("#oldpassword").val();
                 var pass_patt = /\w{6,18}$/;
                 var ObjNewPass = $("#newpassword").val();
                 var ObjreNewPass = $("#renewpassword").val();
                 if (ObjreNewPass.length == 0) {
                     alert("确认新密码不能为空！！！");
-                }
-
-                if(ObjNewPass!=ObjreNewPass){
+                }else if (ObjNewPass != ObjreNewPass) {
                     alert("确认新密码和新密码不一致！！！");
-                }
-                if (!pass_patt.test(ObjNewPass)) {
+                }else if (!pass_patt.test(ObjNewPass)) {
                     alert("密码格式不符合要求！！！");
-                }
-                if(ObjOldPass==ObjNewPass){
+                }else if (ObjOldPass == ObjNewPass) {
                     alert("新密码和久密码不能相同！！！");
                 }
             });
@@ -63,35 +60,35 @@
                 var pass_patt = /\w{6,18}$/;
                 if (ObjOldPass.length == 0) {
                     alert("旧密码不能为空！！！");
-                }
-                if (ObjNewPass.length == 0) {
+                }else if (ObjNewPass.length == 0) {
                     alert("新密码不能为空！！！");
-                }
+                }else
                 if (ObjreNewPass.length == 0) {
                     alert("确认新密码不能为空！！！");
-                }
-                if (ObjNewPass != ObjreNewPass) {
+                }else if (ObjNewPass != ObjreNewPass) {
                     alert("确认新密码和新密码不一致！！！");
-                }
-                if (ObjOldPass.length != 0 && ObjreNewPass.length != 0 && ObjreNewPass.length != 0 && ObjNewPass == ObjreNewPass&&ObjOldPass!=ObjNewPass) {
+                }else if (ObjOldPass.length != 0 && ObjreNewPass.length != 0 && ObjreNewPass.length != 0 && ObjNewPass == ObjreNewPass && ObjOldPass != ObjNewPass) {
                     if (pass_patt.test(ObjNewPass)) {
-                        $.ajax({
-                            url: "changepass",
-                            type: "post",
-                            dataType: "json",
-                            data: {"username": "${sessionScope.username}", "password": $("#newpassword").val()},
-                            async: false,
-                            success: function (data) {
-                                if (data) {
-                                    alert("密码修改成功")
-                                } else {
-                                    alert("密码修改失败")
+                        if (confirm("是否确认修改密码？")) {
+                            $.ajax({
+                                url: "changepass",
+                                type: "post",
+                                dataType: "json",
+                                data: {"username": "${sessionScope.username}", "password": $("#newpassword").val()},
+                                async: false,
+                                success: function (data) {
+                                    if (data) {
+                                        alert("密码修改成功")
+                                    } else {
+                                        alert("密码修改失败")
+                                    }
+                                },
+                                error: function (data) {
+                                    console.log("传输失败");
                                 }
-                            },
-                            error: function (data) {
-                                console.log("传输失败");
-                            }
-                        })
+                            })
+                        }
+
                     } else {
                         alert("密码格式不符合要求！！！");
                     }
@@ -103,7 +100,7 @@
 </head>
 <body>
 <div></div>
-<div id="changePss_div">
+<div id="changePss_div" class="form_sigin">
     <form id="change_pass_form">
         <label>旧密码:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
         <input type="password" id="oldpassword" name="oldpassword"/><br><br>

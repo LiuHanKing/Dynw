@@ -1,6 +1,8 @@
 .user_div{
-height:300px;
-}
+     height:300px;
+     margin-top: 50px;
+     margin-left: 480px;
+ }
 #sendEmailCode{
     width: 100px;
 }
@@ -35,8 +37,21 @@ height:300px;
     margin-left: 60px;
     margin-right: 60px;
 }
-#login_head_sigin{
-    display: block;
-    text-align:right;
+/*
+.login_head_sigin{
+     display: block;
+      text-align:right;
+}
+*/
+a{
     text-decoration:none;
+}
+.ul_menu{
+list-style: none;
+}
+.ul_menu li{
+    display:inline-block;
+}
+.div_menu{
+    text-align:right;
 }

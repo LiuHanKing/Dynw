@@ -10,12 +10,12 @@
 <head>
     <%@include file="../comm/comm.jsp" %>
     <title>Title</title>
-    <script type="text/javascript" src="source/js/logout.js"></script>
-    <style>
+    <style type="text/css">
         a{
             text-decoration:none;
         }
     </style>
+    <script type="text/javascript" src="source/js/logout.js"></script>
 </head>
 <body>
 
@@ -25,6 +25,7 @@
 <div>
     <a href="getInfo?userid=${sessionScope.userid}">个人信息</a>
     <a href="page/user/change_pss.jsp">修改密码</a>
+    <a href="page/user/forgotpass.jsp">忘记密码</a>
     <a id="logout">注销</a>
 </div>
 

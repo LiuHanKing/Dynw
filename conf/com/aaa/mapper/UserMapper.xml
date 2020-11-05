@@ -15,6 +15,10 @@
         update yh_user set yh_password=#{param2}
         where yh_yhbh =#{param1}
     </update>
+    <update id="updateUserByEmail">
+        update yh_user set yh_password=#{param2}
+        where yh_email =#{param1}
+    </update>
     <select id="selectYhbh" resultType="integer" parameterType="string">
         select * from yh_user
         where yh_yhbh =#{yhbh}

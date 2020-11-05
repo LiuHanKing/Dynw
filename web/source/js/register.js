@@ -81,27 +81,27 @@ $(function () {
         })
 
         //倒计时
-        var seconds = 60;//倒计时时间
-        var handle;//事件柄
-        function startTimer() {//开始计数
-            handle = setInterval(timer, 1000);//刷新定时器
-            $("#sendEmailCode").attr({"disabled": true});
-        }
+    var seconds = 60;//倒计时时间
+    var handle;//事件柄
+    function startTimer() {//开始计数
+        handle = setInterval(timer, 1000);//刷新定时器
+        $("#sendEmailCode").attr({"disabled": true});
+    }
 
-        function timer() {//计数器
-            seconds -= 1;
-            $("#sendEmailCode").val(seconds);
-            if (seconds == 0) {
-                stopTimer();
-            }
+    function timer() {//计数器
+        seconds -= 1;
+        $("#sendEmailCode").val(seconds);
+        if (seconds == 0) {
+            stopTimer();
         }
+    }
 
-        function stopTimer() {//结束定时器
-            clearInterval(handle);
-            $("#sendEmailCode").attr({"disabled": false});
-            $("#sendEmailCode").val("获取验证码");
-            seconds = 60;
-        }
+    function stopTimer() {//结束定时器
+        clearInterval(handle);
+        $("#sendEmailCode").attr({"disabled": false});
+        $("#sendEmailCode").val("获取验证码");
+        seconds = 60;
+    }
 
         /*发送邮件*/
         $("#sendEmailCode").on("click",function () {
