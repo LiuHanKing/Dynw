@@ -8,14 +8,14 @@
     select * from yh_user
     </sql>
     <insert id="addUser">
-        insert into yh_user (yh_yhbh,yh_password,yh_email)
-        values(#{user.yh_yhbh},#{user.yh_password},#{user.yh_email})
+        insert into yh_user (yh_yhbh,yh_password,yh_email,yh_yname)
+        values(#{user.yh_yhbh},#{user.yh_password},#{user.yh_email},#{user.yh_yname})
     </insert>
-    <update id="updateUser">
+    <update id="updateUserPass">
         update yh_user set yh_password=#{param2}
         where yh_yhbh =#{param1}
     </update>
-    <update id="updateUserByEmail">
+    <update id="updateUserPassByEmail">
         update yh_user set yh_password=#{param2}
         where yh_email =#{param1}
     </update>

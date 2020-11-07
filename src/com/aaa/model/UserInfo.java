@@ -24,22 +24,9 @@ public class UserInfo implements Serializable {
     private String email;
     private String homeAddres;
     private String hobby;
+    private String yname;
 
     public UserInfo() {
-    }
-
-    public UserInfo(int yh_id, String yhbh, int gender, Date brithday, String province, String city, String counties, String phoneNumber, String email, String homeAddres, String hobby) {
-        this.yh_id = yh_id;
-        this.yhbh = yhbh;
-        this.gender = gender;
-        this.brithday = brithday;
-        this.province = province;
-        this.city = city;
-        this.counties = counties;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.homeAddres = homeAddres;
-        this.hobby = hobby;
     }
 
     @Override
@@ -56,7 +43,27 @@ public class UserInfo implements Serializable {
                 ", email='" + email + '\'' +
                 ", homeAddres='" + homeAddres + '\'' +
                 ", hobby='" + hobby + '\'' +
+                ", yname='" + yname + '\'' +
                 '}';
+    }
+
+    public UserInfo(int yh_id, String yhbh, int gender, Date brithday, String province, String city, String counties, String phoneNumber, String email, String homeAddres, String hobby, String yname) {
+        this.yh_id = yh_id;
+        this.yhbh = yhbh;
+        this.gender = gender;
+        this.brithday = brithday;
+        this.province = province;
+        this.city = city;
+        this.counties = counties;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.homeAddres = homeAddres;
+        this.hobby = hobby;
+        this.yname = yname;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public int getYh_id() {
@@ -67,11 +74,11 @@ public class UserInfo implements Serializable {
         this.yh_id = yh_id;
     }
 
-    public String getyhbh() {
+    public String getYhbh() {
         return yhbh;
     }
 
-    public void setyhbh(String yhbh) {
+    public void setYhbh(String yhbh) {
         this.yhbh = yhbh;
     }
 
@@ -123,11 +130,11 @@ public class UserInfo implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -145,5 +152,13 @@ public class UserInfo implements Serializable {
 
     public void setHobby(String hobby) {
         this.hobby = hobby;
+    }
+
+    public String getYname() {
+        return yname;
+    }
+
+    public void setYname(String yname) {
+        this.yname = yname;
     }
 }

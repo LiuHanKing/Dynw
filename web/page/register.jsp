@@ -14,24 +14,31 @@
     <link rel="stylesheet" href="source/css/head_sigin.css">
 </head>
 <body>
+
 <div>
     <div id="login_head">
-        <h1>欢迎登陆</h1>
-        <a href="page/login.jsp" id="login_head_sigin">登陆</a>
+        <h1>欢迎注册</h1>
+        <div class="div_menu">
+            <ul class="ul_menu">
+                <li>
+                    <a href="page/login.jsp" id="login_head_sigin">登陆</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <hr>
 </div>
 <div class="user_div">
     <form action="checkCode" method="POST">
         <table>
-            <tr>
+<%--            <tr>
                 <td class="user_cont">
                     用户编号
                 </td>
                 <td colspan="2">
                     <input type="text" placeholder="长度5-16,字母,数字" class="login_text" name="yhbh" id="yhbh"/>
                 </td>
-            </tr>
+            </tr>--%>
 
             <tr>
                 <td class="user_cont">

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -108,7 +109,7 @@ public class UserHandler {
 
     //校验邮件验证码
     @RequestMapping(value = "/checkCode", method = RequestMethod.POST)
-    public String checkEmaiCode(Model model, String email,String yhbh, String password,HttpServletRequest request) {
+    public String checkEmaiCode(Model model, String email, String password,HttpServletRequest request) {
         System.out.println("-------确认邮件验证码------");
         HttpSession session = request.getSession();
         String code = (String) session.getAttribute("yzm");
@@ -116,19 +117,25 @@ public class UserHandler {
         //获取的验证码
         String yzm = (request.getParameter("yzm")).trim();
         System.out.println(yzm);
-        Integer y= userService.selectYhbh(yhbh);
-        System.out.println("得到的email"+email);
+
         Integer e= userService.selectEmail(email);
+        //生成用户名称
+        String StringName=System.currentTimeMillis()+""+"YH_name";
+        BASE64Encoder encoder=new BASE64Encoder();
+        String base64BeforeStrName=encoder.encode(StringName.getBytes());
+        //生成用户编号
+        String yhbh=base64BeforeStrName.substring(1,4)+(System.currentTimeMillis()+"").substring(9,13);
         //判断用户编号是否可用
-        if (y == null&&e==null) {
+        if (e==null) {
             User user=new User();
             if (yzm.equals(code)) {
-                model.addAttribute("messg", "注册成功");
+                model.addAttribute("messg", "注册成功!  您的用户编号为"+yhbh);
                 //验证码使用之后，把session存储的验证码移出
                 session.removeAttribute("yzm");
                 user.setYh_yhbh(yhbh);
                 user.setYh_email(email);
                 user.setYh_password(password);
+                user.setYh_yname(base64BeforeStrName);
                 userService.addUser(user);
                 System.out.println(yzm);
                 return "login";
@@ -234,7 +241,7 @@ public class UserHandler {
     @RequestMapping(value = "changepass",method = RequestMethod.POST)
     public @ResponseBody boolean changepass(Model model, String username,String password) {
         System.out.println("++++++++++修改密码+++++++++++");
-        boolean ifchange=userService.updateUser(username,password);
+        boolean ifchange=userService.updateUserPass(username,password);
         return ifchange;
     }
 
@@ -247,7 +254,7 @@ public class UserHandler {
         String yzmcode=yzm.trim();
         boolean ifchange=false;
         if (code.equals(yzmcode)) {
-            ifchange=userService.updateUserByEmail(email,password);
+            ifchange=userService.updateUserPassByEmail(email,password);
             System.out.println(ifchange+"----------------------");
         }
         return ifchange;

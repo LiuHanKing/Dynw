@@ -77,6 +77,7 @@
                                 data: {"username": "${sessionScope.username}", "password": $("#newpassword").val()},
                                 async: false,
                                 success: function (data) {
+                                    console.log(data)
                                     if (data) {
                                         alert("密码修改成功")
                                     } else {

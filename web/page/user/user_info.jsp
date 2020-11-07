@@ -103,10 +103,16 @@
                 }
             }
 
+            $("#yname").on("blur",function(){
+                var objname=$("#yname").val();
+                if(objname.length>=120&&objname.length<=0){
+                    alert("用户名长度在1-120之间")
+                }
+            })
             $("#sub_input").click(function () {
                 var ObjphoneNumber = $("#phoneNumber").val();
                 if (confirm("是否确认修改个人信息？")) {
-                    if (ObjphoneNumber.length == 11 || ObjphoneNumber.length == 0) {
+                    if (ObjphoneNumber.length == 11 || ObjphoneNumber.length == 0&&objname.length<=120&&objname.length>=0) {
                         $.ajax({
                             url: "updateInfo",
                             type: "post",
@@ -136,6 +142,8 @@
             <input id="yh_id" name="yh_id" value="${userInfo.yh_id}" hidden/>
             <label>用户编号:</label>
             <input type="text" value="${userInfo.yhbh}" id="yhbh" name="yhbh" disabled="true"/><br><br>
+            <label>用户名</label>
+            <input type="text" value="${userInfo.yname}" id="yname" name="yname" placeholder="用户名在1——120之间"/><br><br>
             <label>性别:</label>
             <select value="${userInfo.gender}" id="gender" name="gender">
                 <option value='1' <c:if test="${userInfo.gender ==1}">selected</c:if>>男</option>

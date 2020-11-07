@@ -18,7 +18,7 @@
     color:red;
     position:absolute;
     left:64%;
-    top:80px
+    top:40px;
 }
 .user_cont{
     width:72px;
@@ -37,12 +37,6 @@
     margin-left: 60px;
     margin-right: 60px;
 }
-/*
-.login_head_sigin{
-     display: block;
-      text-align:right;
-}
-*/
 a{
     text-decoration:none;
 }

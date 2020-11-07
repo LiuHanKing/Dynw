@@ -1,6 +1,6 @@
 $(function () {
 
-        $("#yhbh").on("blur", function () {
+        /*$("#yhbh").on("blur", function () {
             var result_yhbh;
             var yhbh = $("#yhbh").val();
             //yhbh的校验规则
@@ -36,7 +36,7 @@ $(function () {
                     $("#errorMsg").text("此用户编号不可用");
                 }
             }
-        });
+        });*/
 
         //创建校验email的函数
         $("#email").on("blur",function () {
@@ -110,7 +110,7 @@ $(function () {
             var email = $("#email").val();
             //email的校验规则
             var email_patt = /^\w+([-+.]\w+)*@\w+([-.]\\w+)*\.\w+([-.]\w+)*$/;
-            console.log(email);
+            //console.log(email);
             //判断非空
             if (email.length == 0) {
                 $("#errorMsg").text("邮箱不能为空");
@@ -167,7 +167,7 @@ $(function () {
             var passObj = $("#password").val();
             //获取再次输入密码框的值
             var repassObj = $("#repassword").val();
-            console.log(passObj+"-------------"+repassObj);
+            //console.log(passObj+"-------------"+repassObj);
             if (repassObj.length == 0) {
                 $("#errorMsg").text("确认密码不能为空");
             } else {
@@ -199,11 +199,11 @@ $(function () {
         //注册提交
         $("#register_submit").on("click",function () {
             var emailObj = $("#email").val();
-            var yhbhObj = $("#yhbh").val();
+            // var yhbhObj = $("#yhbh").val();
             var passwordObj = $("#password").val();
             var repasswordObj = $("#repassword").val();
             var codeObj = $("#code").val();
-            if (emailObj.length == 0 || yhbhObj.length == 0 || passwordObj.length == 0 || repasswordObj.length == 0 || codeObj.length == 0) {
+            if (emailObj.length == 0 ||  passwordObj.length == 0 || repasswordObj.length == 0 || codeObj.length == 0) {
                 $("#errorMsg").text("邮箱地址，用户编号，密码，确认密码，验证码不能为空");
             } else {
                 return true;

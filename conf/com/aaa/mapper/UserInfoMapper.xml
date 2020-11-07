@@ -13,7 +13,8 @@
         counties=#{userInfo.counties},
         phoneNumber=#{userInfo.phoneNumber},
         homeAddres=#{userInfo.homeAddres},
-        hobby=#{userInfo.hobby}
+        hobby=#{userInfo.hobby},
+        yname=#{userInfo.yname}
         where yh_id=#{userInfo.yh_id}
     </update>
 
@@ -29,7 +30,8 @@
         phoneNumber,
         email,
         homeAddres,
-        hobby
+        hobby,
+        yname
         from yh_info where yh_id=#{userid}
     </select>
 </mapper>

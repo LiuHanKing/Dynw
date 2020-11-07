@@ -14,6 +14,20 @@ public class User {
     private String yh_email;
     private String yh_status;
     private String yh_scbz;
+    private String yh_yname;
+
+    public User() {
+    }
+
+    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz, String yh_yname) {
+        this.yh_id = yh_id;
+        this.yh_yhbh = yh_yhbh;
+        this.yh_password = yh_password;
+        this.yh_email = yh_email;
+        this.yh_status = yh_status;
+        this.yh_scbz = yh_scbz;
+        this.yh_yname = yh_yname;
+    }
 
     @Override
     public String toString() {
@@ -24,6 +38,7 @@ public class User {
                 ", yh_email='" + yh_email + '\'' +
                 ", yh_status='" + yh_status + '\'' +
                 ", yh_scbz='" + yh_scbz + '\'' +
+                ", yh_yname='" + yh_yname + '\'' +
                 '}';
     }
 
@@ -75,15 +90,11 @@ public class User {
         this.yh_scbz = yh_scbz;
     }
 
-    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz) {
-        this.yh_id = yh_id;
-        this.yh_yhbh = yh_yhbh;
-        this.yh_password = yh_password;
-        this.yh_email = yh_email;
-        this.yh_status = yh_status;
-        this.yh_scbz = yh_scbz;
+    public String getYh_yname() {
+        return yh_yname;
     }
 
-    public User() {
+    public void setYh_yname(String yh_yname) {
+        this.yh_yname = yh_yname;
     }
 }
