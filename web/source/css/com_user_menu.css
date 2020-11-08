@@ -1,0 +1,76 @@
+/*设置文本的字体颜色为蓝色*/
+li a {
+    color: blue;
+}
+
+/*鼠标停留时二级菜单显示*/
+.ul_menu > li:hover .ul_div_menu_help_c {
+    display: block;
+}
+
+/*鼠标停留时三级菜单显示*/
+.ul_div_menu_help_c > li:hover .ul_div_menu_help_c_ul {
+    display: block;
+}
+
+/*让二级菜单隐藏起来*/
+.ul_div_menu_help_c {
+    display: none;
+}
+
+/*二级菜单以竖直形式展示背景颜色以及定位，不显示样式*/
+.ul_div_menu_help_c {
+    list-style-type: none;
+    position: relative;
+    position: fixed;
+    background-color: chartreuse;
+    width: auto;
+    float: right;
+}
+
+/*让二级菜单以竖直形式展示*/
+.ul_div_menu_help_c li {
+    font-size: 16px;
+    display: list-item;
+}
+
+/*让三级菜单隐藏起来*/
+.ul_div_menu_help_c_ul {
+    display: none;
+}
+
+/*三级菜单以竖直形式展示背景颜色以及定位，不显示样式*/
+.ul_div_menu_help_c_ul {
+    list-style-type: none;
+    position: relative;
+    position: fixed;
+    background-color: chartreuse;
+    width: auto;
+}
+
+/*让三级菜单以竖直形式展示*/
+.menu_li ul li {
+    font-size: 16px;
+    display: list-item;
+}
+
+#user_yname {
+    color: black;
+}
+.ul_menu{
+    list-style: none;
+}
+.ul_menu li{
+    display:inline-block;
+}
+a{
+    text-decoration:none;
+}
+h1{
+    text-align: center;
+}
+.user_div{
+    height:300px;
+    margin-top: 50px;
+    margin-left: 480px;
+}

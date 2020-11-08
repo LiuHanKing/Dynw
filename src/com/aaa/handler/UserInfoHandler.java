@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /*
@@ -56,7 +58,9 @@ public class UserInfoHandler {
 
     //修改用户的个人信息
     @RequestMapping(value = "updateInfo",method = RequestMethod.POST)
-    public @ResponseBody boolean updateInfo(Model model, UserInfo userInfo) {
+    public @ResponseBody boolean updateInfo(Model model, UserInfo userInfo, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.setAttribute("username", userInfo.getYname());
         System.out.println(userInfo+"+++++++++查询个人信息++++++++++++");
        boolean change=userInfoService.updateUserInfo(userInfo);
         return change;

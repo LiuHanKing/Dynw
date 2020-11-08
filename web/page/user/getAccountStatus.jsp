@@ -126,7 +126,9 @@
         </table>
     </div>
 </div>
+<div>
+    <%@include file="../comm/footer.jsp" %>
+</div>
 
-<%@include file="../comm/footer.jsp" %>
 </body>
 </html>

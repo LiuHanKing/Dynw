@@ -100,7 +100,9 @@
     </script>
 </head>
 <body>
-<div></div>
+<div>
+
+</div>
 <div id="changePss_div" class="form_sigin">
     <form id="change_pass_form">
         <label>旧密码:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
@@ -113,6 +115,8 @@
     </form>
 
 </div>
-<div></div>
+<div>
+    <%@include file="../comm/footer.jsp" %>
+</div>
 </body>
 </html>

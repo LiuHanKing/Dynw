@@ -10,9 +10,13 @@
 <head>
     <%@include file="../comm/comm_info.jsp" %>
     <title>user_info</title>
+    <link rel="stylesheet" href="source/css/com_user_menu.css">
     <style type="text/css">
         .input_width {
             width: 130px;
+        }
+        #user_info_div{
+            margin-left: 320px;
         }
     </style>
     <script type="text/javascript">
@@ -103,16 +107,22 @@
                 }
             }
 
-            $("#yname").on("blur",function(){
-                var objname=$("#yname").val();
-                if(objname.length>=120&&objname.length<=0){
+            $("#yname").on("blur", function () {
+                var objname = $("#yname").val();
+                if (objname.length >= 120 && objname.length <= 0) {
                     alert("用户名长度在1-120之间")
                 }
             })
             $("#sub_input").click(function () {
                 var ObjphoneNumber = $("#phoneNumber").val();
-                if (confirm("是否确认修改个人信息？")) {
-                    if (ObjphoneNumber.length == 11 || ObjphoneNumber.length == 0&&objname.length<=120&&objname.length>=0) {
+                var Objname = $("#yname").val();
+                if (Objname.length >= 120 && Objname.length == 0) {
+                    alert("用户名不能为空，长度不能超过120个字符！！！");
+                } else if (ObjphoneNumber.length != 11 && ObjphoneNumber.length != 0) {
+                    alert("手机号码可以为空或或者11位手机号码！！！");
+                } else if (confirm("是否确认修改个人信息？")) {
+                    if (Objname.length<=120&&Objname.length!=0&&(ObjphoneNumber.length == 11|| ObjphoneNumber.length == 0)) {
+
                         $.ajax({
                             url: "updateInfo",
                             type: "post",
@@ -134,10 +144,12 @@
     </script>
 </head>
 <body>
-
-<span id="message"></span>
 <div>
-    <div>
+    <%@include file="../comm/com_user_menu.jsp" %>
+</div>
+<span id="message"></span>
+<div class="user_div">>
+    <div id="user_info_div">
         <form id="userinfo_form">
             <input id="userid" name="userid" value="${sessionScope.userid}" hidden/>
             <input id="yh_id" name="yh_id" value="${userInfo.yh_id}" hidden/>
@@ -148,7 +160,7 @@
             <label>性别:</label>
             <select value="${userInfo.gender}" id="gender" name="gender">
                 <option value='1' <c:if test="${userInfo.gender ==1}">selected</c:if>>男</option>
-                <option value='  ' <c:if test="${userInfo.gender ==0}">selected</c:if>>女</option>
+                <option value='0' <c:if test="${userInfo.gender ==0}">selected</c:if>>女</option>
             </select><br><br>
             <label>出生日期:</label>
             <input type="datetime-local" name="brithday"
@@ -186,6 +198,9 @@
             <label><input type="submit" value="确认修改" id="sub_input"/> </label>
         </form>
     </div>
+</div>
+<div>
+    <%@include file="../comm/footer.jsp" %>
 </div>
 </body>
 <script type="text/javascript">

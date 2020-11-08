@@ -118,7 +118,7 @@
 <body>
 <div>
     <div></div>
-    <div class="form_sigin">
+    <div class="form_sigin" class="user_div">
         <form>
             <label>邮箱地址:&nbsp&nbsp&nbsp&nbsp</label>
             <input type="email" id="email" name="email"/>
@@ -135,6 +135,8 @@
     </div>
     <div></div>
 </div>
-
+<div>
+    <%@include file="../comm/footer.jsp" %>
+</div>
 </body>
 </html>

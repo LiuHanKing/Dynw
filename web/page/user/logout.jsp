@@ -23,11 +23,13 @@
     ${messg}
 </div>
 <div>
-    <a href="getInfo?userid=${sessionScope.userid}">个人信息</a>
-    <a href="page/user/change_pss.jsp">修改密码</a>
-    <a href="page/user/forgotpass.jsp">忘记密码</a>
-    <a id="logout">注销</a>
+    <%@include file="../comm/com_user_menu.jsp" %>
 </div>
+<div class="user_div">
 
+</div>
+<div>
+    <%@include file="../comm/footer.jsp" %>
+</div>
 </body>
 </html>

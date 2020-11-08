@@ -169,7 +169,7 @@ public class UserHandler {
         // 删除 Session 中的谷歌验证码
         request.getSession().removeAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
         String loginstatu = null;
-        System.out.println(token + "--------------" + GoogleCode + "----------------" + username);
+        //System.out.println(token + "--------------" + GoogleCode + "----------------" + username);
         String loginAction = "login";
         LoginLog loginLog = new LoginLog();
         loginLog.setLogin_user(username);
@@ -185,8 +185,9 @@ public class UserHandler {
                 System.out.println(user.getYh_status() + "+++++++++++++++" + user.getYh_scbz());
                 if (user.getYh_status().equals("0") && user.getYh_scbz().equals("0")) {
                     loginstatu = "0";
-                    session.setAttribute("username", username);
+                    session.setAttribute("username", user.getYh_yname());
                     session.setAttribute("userid", user.getYh_id());
+                    session.setAttribute("yhcaste", user.getYh_caste());
                     //System.out.println(loginstatu);
                     loginLog.setLogin_status(loginstatu);
                     //boolean b=userService.addLoginLog(loginLog);
@@ -259,7 +260,7 @@ public class UserHandler {
         userService.addLoginLog(loginLog);
         session.invalidate();
         System.out.println("-------注销登陆-----------");
-        return "register";
+        return "login";
     }
 
     @RequestMapping(value = "getEmailTemp")
