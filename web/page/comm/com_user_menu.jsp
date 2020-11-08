@@ -46,14 +46,20 @@
             <li class="menu_li">
                 <a id="logout">注销登陆</a>
             </li>
-            <li>
+            <li class="menu_li">
                 <a id="user_yname">
                     当前登陆的账号:${sessionScope.username}
                 </a>
             </li>
             <c:if test="${sessionScope.yhcaste !='0'}">
-                <li>
+                <li class="menu_li">
                     <a>后台管理</a>
+                    <ul class="ul_div_menu_help_c">
+                        <li>
+                            <a href="page/manager/onlineNumber.jsp" class="login_head_sigin">在线人数</a>
+                        </li>
+
+                    </ul>
                 </li>
             </c:if>
 
