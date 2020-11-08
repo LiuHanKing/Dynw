@@ -10,22 +10,27 @@
 <head>
     <title>Title</title>
     <style type="text/css">
+        /*设置文本的字体颜色为蓝色*/
         li a {
             color: blue;
         }
 
+        /*鼠标停留时二级菜单显示*/
         .ul_menu > li:hover .ul_div_menu_help_c {
             display: block;
         }
 
+        /*鼠标停留时三级菜单显示*/
         .ul_div_menu_help_c > li:hover .ul_div_menu_help_c_ul {
             display: block;
         }
 
+        /*让二级菜单隐藏起来*/
         .ul_div_menu_help_c {
             display: none;
         }
 
+        /*二级菜单以竖直形式展示背景颜色以及定位，不显示样式*/
         .ul_div_menu_help_c {
             list-style-type: none;
             position: relative;
@@ -35,24 +40,27 @@
             float: right;
         }
 
+        /*让二级菜单以竖直形式展示*/
         .ul_div_menu_help_c li {
             font-size: 16px;
             display: list-item;
         }
 
+        /*让三级菜单隐藏起来*/
         .ul_div_menu_help_c_ul {
             display: none;
         }
 
+        /*三级菜单以竖直形式展示背景颜色以及定位，不显示样式*/
         .ul_div_menu_help_c_ul {
             list-style-type: none;
             position: relative;
             position: fixed;
             background-color: chartreuse;
             width: auto;
-            float: right;
         }
 
+        /*让三级菜单以竖直形式展示*/
         .ul_div_menu_help_c_ul li {
             font-size: 16px;
             display: list-item;
@@ -60,10 +68,11 @@
     </style>
     <script type="text/javascript">
         $(function () {
-
+            /*设置鼠标移入时背景颜色*/
             $(".menu_li").on("mouseover", function () {
                 $(this).css("backgroundColor", "chartreuse");
             })
+            /*设置鼠标移出时背景颜色恢复*/
             $(".menu_li").on("mouseout", function () {
                 $(this).css("backgroundColor", "");
             })
