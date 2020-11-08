@@ -57,7 +57,7 @@ public class UserInfoHandler {
     //修改用户的个人信息
     @RequestMapping(value = "updateInfo",method = RequestMethod.POST)
     public @ResponseBody boolean updateInfo(Model model, UserInfo userInfo) {
-        System.out.println(userInfo+"+++++++++++++++++++++");
+        System.out.println(userInfo+"+++++++++查询个人信息++++++++++++");
        boolean change=userInfoService.updateUserInfo(userInfo);
         return change;
     }

@@ -60,7 +60,12 @@ public class SendEmail {
 
             msg.setText(context);
             //发送邮件
-            Transport.send(msg);
+            try {
+                Transport.send(msg);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+                System.out.println("邮箱地址找不到！！！");
+            }
         }catch (MessagingException mex) {
             mex.printStackTrace();
         }

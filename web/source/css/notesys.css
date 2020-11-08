@@ -1,7 +1,22 @@
 a{
 text-decoration:none;
 }
-        .user_div{
-            margin-top:15px;
-            margin-left: 480px;
-        }
+#login_head {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+#sigin_menu_main{
+    height:400px;
+}
+.ul_menu{
+list-style: none;
+}
+.ul_menu li{
+    display:inline-block;
+}
+.ul_menu li ul{
+
+}
+h1{
+text-align:center;
+}

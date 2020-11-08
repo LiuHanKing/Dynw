@@ -18,29 +18,49 @@
     <update id="updateUserPassByEmail">
         update yh_user set yh_password=#{param2}
         where yh_email =#{param1}
+        and  yh_status ='1'
+        and yh_scbz='0'
+    </update>
+    <update id="updateUserFreeze">
+        update yh_user set yh_status='0'
+        where yh_email =#{param1}
+        and  yh_status in ('1')
+        and yh_scbz='0'
     </update>
     <select id="selectYhbh" resultType="integer" parameterType="string">
         select * from yh_user
         where yh_yhbh =#{yhbh}
+        and  yh_status in ('0','1','2')
+        and yh_scbz='0'
     </select>
     <select id="selectEmail" resultType="integer" parameterType="string">
        select * from yh_user
         where yh_email =#{email}
+        and  yh_status in ('0','1','2')
+        and yh_scbz='0'
     </select>
     <select id="getUser" resultType="User">
         <include refid="selectYhUser"/>
         <where>
-        <choose>
-            <when test="username !=null">
-                (
-                yh_yhbh =#{username}
-                or yh_email=#{username}
-                )
-                and
-                yh_password =#{password}
-            </when>
-        </choose>
+            <choose>
+                <when test="username !=null">
+                    (
+                    yh_yhbh =#{username}
+                    or yh_email=#{username}
+                    )
+                    and
+                    yh_password =#{password}
+                    and yh_status in ('0','1','2')
+                    and yh_scbz='0'
+                </when>
+            </choose>
         </where>
+    </select>
+    <select id="getUserStatus" resultType="com.aaa.model.User">
+        <include refid="selectYhUser"/>
+        where
+        yh_yhbh =#{account}
+        or yh_email=#{account}
     </select>
 
     <insert id="addLoginLog">

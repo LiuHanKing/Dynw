@@ -50,4 +50,14 @@ public class UserServiceImpl implements UserService {
     public boolean updateUserPassByEmail(String email, String password) {
         return userMapper.updateUserPassByEmail(email,password);
     }
+
+    @Override
+    public User getUserStatus(String account) {
+        return userMapper.getUserStatus(account);
+    }
+
+    @Override
+    public boolean updateUserFreeze(String account) {
+        return userMapper.updateUserFreeze(account);
+    }
 }

@@ -20,32 +20,10 @@
     left:64%;
     top:40px;
 }
-.user_cont{
-    width:72px;
-}
 .user_tr{
     text-align: center;
 }
 
-/*#user_title{
-    font-family: 仿宋;
-    font-size: 30px;
-}*/
-/*关于登陆界面和注册界面头部*/
-#login_head {
-    text-align: center;
-    margin-left: 60px;
-    margin-right: 60px;
-}
 a{
     text-decoration:none;
-}
-.ul_menu{
-list-style: none;
-}
-.ul_menu li{
-    display:inline-block;
-}
-.div_menu{
-    text-align:right;
 }

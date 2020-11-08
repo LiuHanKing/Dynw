@@ -14,22 +14,17 @@
     <link rel="stylesheet" href="source/css/head_sigin.css">
 </head>
 <body>
-
 <div>
     <div id="login_head">
         <h1>欢迎注册</h1>
-        <div class="div_menu">
-            <ul class="ul_menu">
-                <li>
-                    <a href="page/login.jsp" id="login_head_sigin">登陆</a>
-                </li>
-            </ul>
-        </div>
+        <%@include file="comm/comm_register_head_div.jsp" %>
     </div>
     <hr>
 </div>
+
+
 <div class="user_div">
-    <form action="checkCode" method="POST">
+    <form action="checkCode" method="POST" id="register_form">
         <table>
 <%--            <tr>
                 <td class="user_cont">

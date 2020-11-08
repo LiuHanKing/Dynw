@@ -39,7 +39,7 @@ $(function () {
         });*/
 
         //创建校验email的函数
-        $("#email").on("blur",function () {
+        $("#email").on("blur", function () {
             var result_email;
             //获取email输入框的值
             var emailObj = $("#email").val();
@@ -61,7 +61,7 @@ $(function () {
                         data: {"email": emailObj},
                         async: false,
                         success: function (data) {
-                            result_email =data;
+                            result_email = data;
                             //console.log(data);
                         },
                         error: function () {
@@ -71,8 +71,9 @@ $(function () {
                 } else {
                     $("#errorMsg").text("邮箱不符合要求");
 
-                };
-                if (result_email==0) {
+                }
+                ;
+                if (result_email == 0) {
                     $("#errorMsg").text("此邮箱地址可用");
                 } else {
                     $("#errorMsg").text("此邮箱地址不可用");
@@ -81,30 +82,30 @@ $(function () {
         })
 
         //倒计时
-    var seconds = 60;//倒计时时间
-    var handle;//事件柄
-    function startTimer() {//开始计数
-        handle = setInterval(timer, 1000);//刷新定时器
-        $("#sendEmailCode").attr({"disabled": true});
-    }
-
-    function timer() {//计数器
-        seconds -= 1;
-        $("#sendEmailCode").val(seconds);
-        if (seconds == 0) {
-            stopTimer();
+        var seconds = 60;//倒计时时间
+        var handle;//事件柄
+        function startTimer() {//开始计数
+            handle = setInterval(timer, 1000);//刷新定时器
+            $("#sendEmailCode").attr({"disabled": true});
         }
-    }
 
-    function stopTimer() {//结束定时器
-        clearInterval(handle);
-        $("#sendEmailCode").attr({"disabled": false});
-        $("#sendEmailCode").val("获取验证码");
-        seconds = 60;
-    }
+        function timer() {//计数器
+            seconds -= 1;
+            $("#sendEmailCode").val(seconds);
+            if (seconds == 0) {
+                stopTimer();
+            }
+        }
+
+        function stopTimer() {//结束定时器
+            clearInterval(handle);
+            $("#sendEmailCode").attr({"disabled": false});
+            $("#sendEmailCode").val("获取验证码");
+            seconds = 60;
+        }
 
         /*发送邮件*/
-        $("#sendEmailCode").on("click",function () {
+        $("#sendEmailCode").on("click", function () {
 
             //获取email输入框的值
             var email = $("#email").val();
@@ -171,7 +172,7 @@ $(function () {
             if (repassObj.length == 0) {
                 $("#errorMsg").text("确认密码不能为空");
             } else {
-                if (repassObj != passObj ) {
+                if (repassObj != passObj) {
                     $("#errorMsg").text("两个密码不一致");
                     //console.log("两个密码不一致");
                 } else {
@@ -192,21 +193,48 @@ $(function () {
             }
         }
         //调用yhbh的函数，全都是失去焦点事件
-        $("#password").on("blur",password_fun);
-        $("#repassword").on("blur",repassword_fun);
-        $("#code").on("blur",code_function);
+        $("#password").on("blur", password_fun);
+        $("#repassword").on("blur", repassword_fun);
+        $("#code").on("blur", code_function);
 
-        //注册提交
-        $("#register_submit").on("click",function () {
+
+        // function startTimerPage() {//页面跳转计时器
+        //     setInterval(location.href = "page/login.jsp", 10000);//刷新定时器
+        // };
+
+
+        $("#register_submit").on("click", function () {
             var emailObj = $("#email").val();
             // var yhbhObj = $("#yhbh").val();
             var passwordObj = $("#password").val();
             var repasswordObj = $("#repassword").val();
             var codeObj = $("#code").val();
-            if (emailObj.length == 0 ||  passwordObj.length == 0 || repasswordObj.length == 0 || codeObj.length == 0) {
+            var msg;
+            if (emailObj.length == 0 || passwordObj.length == 0 || repasswordObj.length == 0 || codeObj.length == 0) {
                 $("#errorMsg").text("邮箱地址，用户编号，密码，确认密码，验证码不能为空");
             } else {
-                return true;
+                $.ajax({
+                    url: "checkCode",
+                    type: "post",
+                    dataType: "json",
+                    data: $("#register_form").serialize(),
+                    success: function (data) {
+                        //var datas=JSON.stringify(data)
+                       // console.log(data+data.message);
+                        /*转换为json字符串*/
+                        var message=JSON.stringify(data);
+                        //alert(message);
+                        /*转换为json对象*/
+                        msg=JSON.parse(message).messg;
+                        console.log(msg);
+                        alert(msg);
+                        //startTimerPage();
+
+                    },
+                    error: function () {
+                        console.log("传输失败");
+                    }
+                })
             }
             return false;
         })

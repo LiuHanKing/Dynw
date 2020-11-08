@@ -26,5 +26,10 @@ public interface UserMapper {
     public boolean updateUserPass(String username,String password);
     //根据邮箱地址修改用户密码
     public boolean updateUserPassByEmail(String email,String password);
+    //查询账号状态
+    public User getUserStatus(@Param("account") String account);
+
+    //解除账号冻结
+    public boolean updateUserFreeze(String account);
 
 }

@@ -12,9 +12,6 @@
     <title>登陆页面</title>
     <script type="text/javascript" src="source/js/login.js"></script>
     <link rel="stylesheet" href="source/css/head_sigin.css">
-    <style type="text/css">
-
-    </style>
     <script type="text/javascript">
         $(function () {
             $("#GoogleCode").click(function () {
@@ -28,28 +25,15 @@
 <div>
     <div id="login_head">
         <h1>欢迎登陆</h1>
-        <div class="div_menu">
-            <ul class="ul_menu">
-                <li>
-                    <a href="page/register.jsp" class="login_head_sigin">注册</a>
-                </li>
-                <li>
-                    <a href="page/user/forgotpass.jsp" class="login_head_sigin">忘记密码</a>
-                </li>
-            </ul>
-        </div>
+        <%@include file="comm/comm_sigin_head_div.jsp" %>
     </div>
     <hr>
 </div>
 
+
 <div class="user_div">
     <form action="login" method="POST">
         <table>
-            <%--            <tr class="user_tr">
-                            <td colspan="2" id="user_title">
-                                欢迎登陆
-                            </td>
-                        </tr>--%>
             <tr>
                 <td class="user_cont">
                     账号

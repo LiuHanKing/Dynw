@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 */
 @Component
 public class User {
+    public static final long serialVersionUID=876876;
     private int yh_id;
     private String yh_yhbh;
     private String yh_password;
@@ -15,11 +16,12 @@ public class User {
     private String yh_status;
     private String yh_scbz;
     private String yh_yname;
+    private String yh_caste;
 
     public User() {
     }
 
-    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz, String yh_yname) {
+    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz, String yh_yname, String yh_caste) {
         this.yh_id = yh_id;
         this.yh_yhbh = yh_yhbh;
         this.yh_password = yh_password;
@@ -27,6 +29,7 @@ public class User {
         this.yh_status = yh_status;
         this.yh_scbz = yh_scbz;
         this.yh_yname = yh_yname;
+        this.yh_caste = yh_caste;
     }
 
     @Override
@@ -39,7 +42,12 @@ public class User {
                 ", yh_status='" + yh_status + '\'' +
                 ", yh_scbz='" + yh_scbz + '\'' +
                 ", yh_yname='" + yh_yname + '\'' +
+                ", yh_caste='" + yh_caste + '\'' +
                 '}';
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public int getYh_id() {
@@ -96,5 +104,13 @@ public class User {
 
     public void setYh_yname(String yh_yname) {
         this.yh_yname = yh_yname;
+    }
+
+    public String getYh_caste() {
+        return yh_caste;
+    }
+
+    public void setYh_caste(String yh_caste) {
+        this.yh_caste = yh_caste;
     }
 }
