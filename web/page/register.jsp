@@ -17,7 +17,7 @@
 <div>
     <div id="login_head">
         <h1>欢迎注册</h1>
-        <%@include file="comm/comm_register_head_div.jsp" %>
+        <%@include file="comm/comm_sigin_head_div.jsp" %>
     </div>
     <hr>
 </div>
