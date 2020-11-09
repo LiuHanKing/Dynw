@@ -17,33 +17,8 @@ public class User {
     private String yh_scbz;
     private String yh_yname;
     private String yh_caste;
-
+    private int yh_wrongTimes;
     public User() {
-    }
-
-    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz, String yh_yname, String yh_caste) {
-        this.yh_id = yh_id;
-        this.yh_yhbh = yh_yhbh;
-        this.yh_password = yh_password;
-        this.yh_email = yh_email;
-        this.yh_status = yh_status;
-        this.yh_scbz = yh_scbz;
-        this.yh_yname = yh_yname;
-        this.yh_caste = yh_caste;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "yh_id=" + yh_id +
-                ", yh_yhbh='" + yh_yhbh + '\'' +
-                ", yh_password='" + yh_password + '\'' +
-                ", yh_email='" + yh_email + '\'' +
-                ", yh_status='" + yh_status + '\'' +
-                ", yh_scbz='" + yh_scbz + '\'' +
-                ", yh_yname='" + yh_yname + '\'' +
-                ", yh_caste='" + yh_caste + '\'' +
-                '}';
     }
 
     public static long getSerialVersionUID() {
@@ -112,5 +87,40 @@ public class User {
 
     public void setYh_caste(String yh_caste) {
         this.yh_caste = yh_caste;
+    }
+
+    public int getYh_wrongTimes() {
+        return yh_wrongTimes;
+    }
+
+    public void setYh_wrongTimes(int yh_wrongTimes) {
+        this.yh_wrongTimes = yh_wrongTimes;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "yh_id=" + yh_id +
+                ", yh_yhbh='" + yh_yhbh + '\'' +
+                ", yh_password='" + yh_password + '\'' +
+                ", yh_email='" + yh_email + '\'' +
+                ", yh_status='" + yh_status + '\'' +
+                ", yh_scbz='" + yh_scbz + '\'' +
+                ", yh_yname='" + yh_yname + '\'' +
+                ", yh_caste='" + yh_caste + '\'' +
+                ", yh_wrongTimes=" + yh_wrongTimes +
+                '}';
+    }
+
+    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz, String yh_yname, String yh_caste, int yh_wrongTimes) {
+        this.yh_id = yh_id;
+        this.yh_yhbh = yh_yhbh;
+        this.yh_password = yh_password;
+        this.yh_email = yh_email;
+        this.yh_status = yh_status;
+        this.yh_scbz = yh_scbz;
+        this.yh_yname = yh_yname;
+        this.yh_caste = yh_caste;
+        this.yh_wrongTimes = yh_wrongTimes;
     }
 }

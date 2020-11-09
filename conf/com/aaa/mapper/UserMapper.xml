@@ -27,6 +27,18 @@
         and  yh_status in ('1')
         and yh_scbz='0'
     </update>
+    <update id="updateUserWrongTimes">
+        update yh_user set yh_wrongTimes=#{param1}
+        where (yh_yhbh=#{param2}
+        or yh_email=#{param2})
+        and yh_scbz='0'
+    </update>
+    <update id="updateUserBeFreeze">
+        update yh_user set yh_status='1'
+        where (yh_yhbh=#{yhaccount}
+        or yh_email=#{yhaccount})
+        and yh_scbz='0'
+    </update>
     <select id="selectYhbh" resultType="integer" parameterType="string">
         select * from yh_user
         where yh_yhbh =#{yhbh}

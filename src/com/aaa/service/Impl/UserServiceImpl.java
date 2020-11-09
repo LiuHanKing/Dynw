@@ -57,6 +57,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean updateUserWrongTimes(int times, String yhaccount) {
+        return userMapper.updateUserWrongTimes(times,yhaccount);
+    }
+
+    @Override
+    public boolean updateUserBeFreeze(String yhaccount) {
+        return userMapper.updateUserBeFreeze(yhaccount);
+    }
+
+    @Override
     public boolean updateUserFreeze(String account) {
         return userMapper.updateUserFreeze(account);
     }

@@ -126,7 +126,6 @@ public class UserHandler {
         //获取的验证码
         String yzm = (request.getParameter("yzm")).trim();
         System.out.println(yzm);
-
         Integer e = userService.selectEmail(email);
         //生成用户名称
         String StringName = System.currentTimeMillis() + "" + "YH_name";
@@ -164,6 +163,8 @@ public class UserHandler {
     @RequestMapping(value = "/login")
     public String selectyhbh(Model model, String username, String password, String ipAddress, String GoogleCode, HttpServletRequest request) {
         System.out.println("-------验证用户登陆------");
+        User user1 = userService.getUserStatus(username);
+        int UserLoginErrorTimes = user1.getYh_wrongTimes();
         // 获取 Session 中的谷歌验证码
         String token = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
         // 删除 Session 中的谷歌验证码
@@ -192,6 +193,7 @@ public class UserHandler {
                     loginLog.setLogin_status(loginstatu);
                     //boolean b=userService.addLoginLog(loginLog);
                     //System.out.println(b);
+                    userService.updateUserWrongTimes(0, username);
                     return "user/logout";
                 } else if (user.getYh_status().equals("1") && user.getYh_scbz().equals("0")) {
                     model.addAttribute("messg", "您的账号已被冻结！！！请到帮助进行处理");
@@ -225,6 +227,17 @@ public class UserHandler {
             }
 
         } else {
+            if (UserLoginErrorTimes <= 2) {
+                boolean ifUp = userService.updateUserWrongTimes(UserLoginErrorTimes+1, username);
+                if (ifUp) {
+                    model.addAttribute("messg", "当前错误次数：" + (UserLoginErrorTimes + 1) + "。当错误次数达到三次，账号会被冻结！！！");
+                }
+            } else if (UserLoginErrorTimes == 3) {
+                boolean ifBe = userService.updateUserBeFreeze(username);
+                if (ifBe) {
+                    model.addAttribute("messg", "当前错误次数已达到3次，账号已冻结。请到帮助解除冻结！！！");
+                }
+            }
             loginstatu = "1";
             loginLog.setLogin_status(loginstatu);
             System.out.println("验证码错误");
@@ -234,11 +247,22 @@ public class UserHandler {
             return "login";
 
         }
+        if (UserLoginErrorTimes <= 2) {
+            boolean ifUp = userService.updateUserWrongTimes(UserLoginErrorTimes+1, username);
+            if (ifUp) {
+                model.addAttribute("messg", "当前错误次数：" + (UserLoginErrorTimes + 1) + "。当错误次数达到三次，账号会被冻结！！！");
+            }
+        } else if (UserLoginErrorTimes == 3) {
+            boolean ifBe = userService.updateUserBeFreeze(username);
+            if (ifBe) {
+                model.addAttribute("messg", "当前错误次数已达到3次，账号已冻结。请到帮助解除冻结！！！");
+            }
+        }
         loginstatu = "1";
         loginLog.setLogin_status(loginstatu);
-        model.addAttribute("messg", "请到帮助解决登陆问题");
+        model.addAttribute("messg", "请到帮助");
         boolean b = userService.addLoginLog(loginLog);
-        System.out.println("-------请到帮助解决登陆问题2------");
+        System.out.println("-------请到帮助------");
         return "login";
     }
 
@@ -360,17 +384,20 @@ public class UserHandler {
         return map;
     }
 
-    //查询账号状态account
+    //解除账号冻结
     @RequestMapping(value = "updateAccountFreeze", method = RequestMethod.POST)
     @ResponseBody
-    public boolean updateAccountFreeze(String email,String yzm, HttpServletRequest request){
+    public boolean updateAccountFreeze(String email, String yzm, HttpServletRequest request) {
         System.out.println("-----------解除账号冻结-------");
         HttpSession session = request.getSession();
         String code = (String) session.getAttribute("yzm");
         String yzmcode = yzm.trim();
         boolean isUnfreeze = false;
-        if(yzmcode.equals(yzmcode)){
-            isUnfreeze=userService.updateUserFreeze(email);
+        if (yzmcode.equals(yzmcode)) {
+            isUnfreeze = userService.updateUserFreeze(email);
+            if (isUnfreeze) {
+                userService.updateUserWrongTimes(0, email);
+            }
         }
         return isUnfreeze;
     }
