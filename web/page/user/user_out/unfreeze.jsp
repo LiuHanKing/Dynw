@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../comm/comm.jsp" %>
+    <%@include file="../../comm/comm.jsp" %>
     <title>Title</title>
     <style type="text/css">
         #user_getUserStatus_div {
@@ -85,7 +85,7 @@
                 timer-=1;
                 if (timer==0) {
                     timer=10;
-                    location.href = "page/login.jsp"
+                    location.href = "../../login.jsp"
                 }
 
             }
@@ -126,7 +126,7 @@
 <div>
     <div id="login_head">
         <h1>帮助</h1>
-        <%@include file="../comm/comm_sigin_head_div.jsp" %>
+        <%@include file="../../comm/comm_sigin_head_div.jsp" %>
     </div>
     <hr>
 </div>
@@ -144,7 +144,7 @@
 
 </div>
 <div>
-    <%@include file="../comm/footer.jsp" %>
+    <%@include file="../../comm/footer.jsp" %>
 </div>
 
 </body>

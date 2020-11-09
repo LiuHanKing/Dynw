@@ -11,6 +11,11 @@
     <title>Title</title>
 </head>
 <body>
+<div>
 
+</div>
+<div>
+    <iframe name="iframe_main" scrolling="no" frameBorder="no" ></iframe>
+</div>
 </body>
 </html>

@@ -8,16 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../comm/comm_info.jsp" %>
+    <%@include file="../../comm/comm.jsp" %>
     <title>user_info</title>
-    <link rel="stylesheet" href="source/css/com_user_menu.css">
     <style type="text/css">
         .input_width {
             width: 130px;
         }
-        #user_info_div{
-            margin-left: 320px;
-        }
+
     </style>
     <script type="text/javascript">
         $(function () {
@@ -121,7 +118,7 @@
                 } else if (ObjphoneNumber.length != 11 && ObjphoneNumber.length != 0) {
                     alert("手机号码可以为空或或者11位手机号码！！！");
                 } else if (confirm("是否确认修改个人信息？")) {
-                    if (Objname.length<=120&&Objname.length!=0&&(ObjphoneNumber.length == 11|| ObjphoneNumber.length == 0)) {
+                    if (Objname.length <= 120 && Objname.length != 0 && (ObjphoneNumber.length == 11 || ObjphoneNumber.length == 0)) {
 
                         $.ajax({
                             url: "updateInfo",
@@ -144,63 +141,54 @@
     </script>
 </head>
 <body>
-<div>
-    <%@include file="../comm/com_user_menu.jsp" %>
-</div>
-<span id="message"></span>
-<div class="user_div">>
-    <div id="user_info_div">
-        <form id="userinfo_form">
-            <input id="userid" name="userid" value="${sessionScope.userid}" hidden/>
-            <input id="yh_id" name="yh_id" value="${userInfo.yh_id}" hidden/>
-            <label>用户编号:</label>
-            <input type="text" value="${userInfo.yhbh}" id="yhbh" name="yhbh" disabled="true"/><br><br>
-            <label>用户名</label>
-            <input type="text" value="${userInfo.yname}" id="yname" name="yname" placeholder="用户名在1——120之间"/><br><br>
-            <label>性别:</label>
-            <select value="${userInfo.gender}" id="gender" name="gender">
-                <option value='1' <c:if test="${userInfo.gender ==1}">selected</c:if>>男</option>
-                <option value='0' <c:if test="${userInfo.gender ==0}">selected</c:if>>女</option>
-            </select><br><br>
-            <label>出生日期:</label>
-            <input type="datetime-local" name="brithday"
-                   value="<fmt:formatDate  value='${userInfo.brithday}' pattern='yyyy-MM-dd' />"
-                   id="brithday" placeholder="yyyy-MM-dd"/>
-            <br><br>
-            <label>省份:</label>
-            <select id="pro" name="province" class="input_width">
-                <c:forEach items="${provinceList}" var="pro">
-                    <option value="${pro.codeid}"
-                            <c:if test="${userInfo.province == pro.codeid}">selected</c:if> >
-                            ${pro.cityName}
-                    </option>
-                </c:forEach>
-            </select>
-            <label>地市:</label>
-            <select id="city" name="city" class="input_width">
-            </select>
+<span class="message"></span>
+<div id="user_info_div">
+    <form id="userinfo_form">
+        <input id="userid" name="userid" value="${sessionScope.userid}" hidden/>
+        <input id="yh_id" name="yh_id" value="${userInfo.yh_id}" hidden/>
+        <label>用户编号:</label>
+        <input type="text" value="${userInfo.yhbh}" id="yhbh" name="yhbh" disabled="true"/><br><br>
+        <label>用户名:&nbsp&nbsp&nbsp&nbsp</label>
+        <input type="text" value="${userInfo.yname}" id="yname" name="yname" placeholder="用户名在1——120之间"/><br><br>
+        <label>性别:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <select value="${userInfo.gender}" id="gender" name="gender">
+            <option value='1' <c:if test="${userInfo.gender ==1}">selected</c:if>>男</option>
+            <option value='0' <c:if test="${userInfo.gender ==0}">selected</c:if>>女</option>
+        </select><br><br>
+        <label>出生日期:</label>
+        <input type="datetime-local" name="brithday"
+               value="<fmt:formatDate  value='${userInfo.brithday}' pattern='yyyy-MM-dd' />"
+               id="brithday" placeholder="yyyy-MM-dd"/>
+        <br><br>
+        <label>省份:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <select id="pro" name="province" class="input_width">
+            <c:forEach items="${provinceList}" var="pro">
+                <option value="${pro.codeid}" <c:if test="${userInfo.province == pro.codeid}">selected</c:if>
+                        ${pro.cityName}
+                </option>
+            </c:forEach>
+        </select><br><br>
+        <label>地市:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <select id="city" name="city" class="input_width">
+        </select><br><br>
 
-            <label>县区:</label>
-            <select id="counties" name="counties" class="input_width">
-            </select><br><br>
-            <label>手机号:</label>
-            <input type="text" value="${userInfo.phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="11位数字"/>
-            <br><br>
-            <label>邮箱地址:</label>
-            <input type="email" value="${userInfo.email}" id="email" readonly="true" name="email"
-                   placeholder="xxx@XXX.com"/> <br><br>
-            <label>家庭住址:</label>
-            <input type="text" value="${userInfo.homeAddres}" id="homeAddres" name="homeAddres" placeholder="大同胡同"/>
-            <br><br>
-            <label>爱好:</label>
-            <input type="text" value="${userInfo.hobby}" name="hobby" id="hobby" placeholder="多个爱好中间中;分隔"/> <br><br>
-            <label><input type="reset" value="重置" id="re_input"/></label>
-            <label><input type="submit" value="确认修改" id="sub_input"/> </label>
-        </form>
-    </div>
-</div>
-<div>
-    <%@include file="../comm/footer.jsp" %>
+        <label>县区:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <select id="counties" name="counties" class="input_width">
+        </select><br><br>
+        <label>手机号:&nbsp&nbsp&nbsp&nbsp</label>
+        <input type="text" value="${userInfo.phoneNumber}" id="phoneNumber" name="phoneNumber" placeholder="11位数字"/>
+        <br><br>
+        <label>邮箱地址:</label>
+        <input type="email" value="${userInfo.email}" id="email" readonly="true" name="email"
+               placeholder="xxx@XXX.com"/> <br><br>
+        <label>家庭住址:</label>
+        <input type="text" value="${userInfo.homeAddres}" id="homeAddres" name="homeAddres" placeholder="大同胡同"/>
+        <br><br>
+        <label>爱好:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+        <input type="text" value="${userInfo.hobby}" name="hobby" id="hobby" placeholder="多个爱好中间中;分隔"/> <br><br>
+        <label><input type="reset" value="重置" id="re_input"/></label>
+        <label><input type="submit" value="确认修改" id="sub_input"/> </label>
+    </form>
 </div>
 </body>
 <script type="text/javascript">

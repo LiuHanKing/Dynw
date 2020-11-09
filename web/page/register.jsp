@@ -79,7 +79,7 @@
     </form>
 </div>
 <div id="msg_div">
-    <span id="errorMsg">
+    <span class="errorMsg">
         ${messg}
     </span>
 

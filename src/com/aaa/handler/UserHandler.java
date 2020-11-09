@@ -6,7 +6,6 @@ import com.aaa.service.EmailService;
 import com.aaa.service.EmailTempService;
 import com.aaa.service.UserService;
 import com.aaa.util.SendEmail;
-import oracle.net.aso.e;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,6 @@ import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -87,7 +85,7 @@ public class UserHandler {
         }
         model.addAttribute("messg", "用户添加失败");
         System.out.println("-------添加用户------");
-        return "user/logout";
+        return "main";
     }
 
     //发送验证码，并记录发送邮件记录
@@ -194,7 +192,7 @@ public class UserHandler {
                     //boolean b=userService.addLoginLog(loginLog);
                     //System.out.println(b);
                     userService.updateUserWrongTimes(0, username);
-                    return "user/logout";
+                    return "user/user_in/main";
                 } else if (user.getYh_status().equals("1") && user.getYh_scbz().equals("0")) {
                     model.addAttribute("messg", "您的账号已被冻结！！！请到帮助进行处理");
                     loginstatu = "1";

@@ -8,11 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../comm/comm.jsp" %>
+    <%@include file="../../comm/comm.jsp" %>
     <title>Title</title>
     <style type="text/css">
-        a{
-            text-decoration:none;
+        a {
+            text-decoration: none;
+        }
+        .user_div{
+            min-height: 300px;
+            height: auto;
         }
     </style>
     <script type="text/javascript" src="source/js/logout.js"></script>
@@ -23,13 +27,13 @@
     ${messg}
 </div>
 <div>
-    <%@include file="../comm/com_user_menu.jsp" %>
+    <%@include file="../../comm/com_user_menu.jsp" %>
 </div>
 <div class="user_div">
-
+    <iframe name="iframe_main" width="auto" height="100%" frameborder="0" noResize="yes"></iframe>
 </div>
 <div>
-    <%@include file="../comm/footer.jsp" %>
+    <%@include file="../../comm/footer.jsp" %>
 </div>
 </body>
 </html>

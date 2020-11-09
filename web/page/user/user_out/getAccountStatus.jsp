@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../comm/comm.jsp" %>
+    <%@include file="../../comm/comm.jsp" %>
     <title>Title</title>
     <link rel="stylesheet" href="source/css/head_sigin.css">
     <style>
@@ -104,7 +104,7 @@
 <div>
     <div id="login_head">
         <h1>查询账号状态</h1>
-        <%@include file="../comm/comm_sigin_head_div.jsp" %>
+        <%@include file="../../comm/comm_sigin_head_div.jsp" %>
     </div>
     <hr>
 </div>
@@ -125,9 +125,6 @@
             </tr>
         </table>
     </div>
-</div>
-<div>
-    <%@include file="../comm/footer.jsp" %>
 </div>
 
 </body>

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../comm/comm.jsp" %>
+    <%@include file="../../comm/comm.jsp" %>
     <title>forgotpass</title>
     <link rel="stylesheet" href="source/css/user.css"/>
     <script type="text/javascript">
@@ -117,7 +117,13 @@
 </head>
 <body>
 <div>
-    <div></div>
+    <div id="login_head">
+        <h1>忘记密码</h1>
+        <%@include file="../../comm/comm_sigin_head_div.jsp" %>
+    </div>
+    <hr>
+</div>
+<div>
     <div class="form_sigin" class="user_div">
         <form>
             <label>邮箱地址:&nbsp&nbsp&nbsp&nbsp</label>
@@ -133,10 +139,9 @@
             <input type="submit" id="sub_forget_pass" value="提交"/>
         </form>
     </div>
-    <div></div>
 </div>
 <div>
-    <%@include file="../comm/footer.jsp" %>
+    <%@include file="../../comm/footer.jsp" %>
 </div>
 </body>
 </html>

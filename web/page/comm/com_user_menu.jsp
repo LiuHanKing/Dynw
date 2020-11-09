@@ -30,16 +30,13 @@
                 <a class="login_head_sigin" id="li_help_menu">用户管理</a>
                 <ul class="ul_div_menu_help_c">
                     <li>
-                        <a href="page/user/getUser.jsp" class="login_head_sigin">账号无法登录</a>
+                        <a href="getInfo?userid=${sessionScope.userid}" target="iframe_main">个人信息</a>
                     </li>
                     <li>
-                        <a href="getInfo?userid=${sessionScope.userid}">个人信息</a>
+                        <a href="page/user/user_in/change_pss.jsp" target="iframe_main">修改密码</a>
                     </li>
                     <li>
-                        <a href="page/user/change_pss.jsp">修改密码</a>
-                    </li>
-                    <li>
-                        <a href="page/user/forgotpass.jsp">忘记密码</a>
+                        <a href="page/user/user_in/forgotpass_in.jsp" target="iframe_main">重置密码</a>
                     </li>
                 </ul>
             </li>
@@ -56,7 +53,7 @@
                     <a>后台管理</a>
                     <ul class="ul_div_menu_help_c">
                         <li>
-                            <a href="page/manager/onlineNumber.jsp" class="login_head_sigin">在线人数</a>
+                            <a href="page/manager/onlineNumber.jsp" class="login_head_sigin" target="iframe_main">在线人数</a>
                         </li>
 
                     </ul>

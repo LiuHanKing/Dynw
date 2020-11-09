@@ -90,19 +90,19 @@
             <a href="page/login.jsp" id="login_head_sigin">登陆</a>
         </li>
         <li class="menu_li">
-            <a href="page/user/forgotpass.jsp" class="login_head_sigin">忘记密码</a>
+            <a href="page/user/user_out/forgotpass.jsp" class="login_head_sigin">忘记密码</a>
         </li>
         <li class="menu_li">
             <a class="login_head_sigin" id="li_help_menu">帮助</a>
             <ul class="ul_div_menu_help_c">
                 <li>
-                    <a href="page/user/getUser.jsp" class="login_head_sigin">账号无法登录</a>
+                    <a  class="login_head_sigin">账号无法登录</a>
                     <ul class="ul_div_menu_help_c_ul">
                         <li>
-                            <a href="page/user/getAccountStatus.jsp" class="login_head_sigin">查询当前账号状态</a>
+                            <a href="page/user/user_out/getAccountStatus.jsp" class="login_head_sigin">查询账号状态</a>
                         </li>
                         <li>
-                            <a href="page/user/unfreeze.jsp" class="login_head_sigin">解除账号冻结</a>
+                            <a href="page/user/user_out/unfreeze.jsp" class="login_head_sigin">解除账号冻结</a>
                         </li>
                         <li>
                             <a class="login_head_sigin">账号申诉</a>

@@ -8,9 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../comm/comm.jsp" %>
+    <%@include file="../../comm/comm.jsp" %>
     <title>changepass</title>
-    <link rel="stylesheet" href="source/css/user.css"/>
+    <style type="text/css">
+        .form_sigin{
+            margin-top:30px;
+            margin-left: 480px;
+        }
+    </style>
     <script type="text/javascript">
         $(function () {
             $("#oldpassword").on("blur", function () {
@@ -100,10 +105,8 @@
     </script>
 </head>
 <body>
-<div>
 
-</div>
-<div id="changePss_div" class="form_sigin">
+<div >
     <form id="change_pass_form">
         <label>旧密码:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
         <input type="password" id="oldpassword" name="oldpassword"/><br><br>
@@ -115,8 +118,6 @@
     </form>
 
 </div>
-<div>
-    <%@include file="../comm/footer.jsp" %>
-</div>
+
 </body>
 </html>

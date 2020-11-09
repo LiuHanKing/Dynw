@@ -71,7 +71,7 @@
     </form>
 </div>
 <div id="msg_div">
-    <span id="errorMsg">${messg}</span>
+    <span class="errorMsg">${messg}</span>
 </div>
 <%@include file="comm/footer.jsp" %>
 </body>

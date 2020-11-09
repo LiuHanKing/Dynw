@@ -32,7 +32,7 @@ public class UserInfoHandler {
         model.addAttribute("userInfo",userInfo1);
         List<Area> provinceList=areaService.getProvince();
         model.addAttribute("provinceList",provinceList);
-        return "user/user_info";
+        return "user/user_in/user_info";
     }
     //查询省份
     @RequestMapping(value = "getProvince",method = RequestMethod.GET)
