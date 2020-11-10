@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="../../comm/comm.jsp" %>
-    <title>forgotpass</title>
+    <title>重置密码</title>
     <script type="text/javascript">
         $(function () {
             //倒计时

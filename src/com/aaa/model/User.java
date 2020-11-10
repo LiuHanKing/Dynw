@@ -8,16 +8,17 @@ import org.springframework.stereotype.Component;
 */
 @Component
 public class User {
-    public static final long serialVersionUID=876876;
-    private int yh_id;
-    private String yh_yhbh;
-    private String yh_password;
-    private String yh_email;
-    private String yh_status;
-    private String yh_scbz;
-    private String yh_yname;
-    private String yh_caste;
-    private int yh_wrongTimes;
+    public static final long serialVersionUID = 876876;
+    private int yh_id;          //用户id
+    private String yh_yhbh;     //用户编号
+    private String yh_password; //用户密码
+    private String yh_email;    //邮箱地址
+    private String yh_status;   //账号状态
+    private String yh_scbz;     //账号删除标志
+    private String yh_yname;    //用户名
+    private String yh_caste;    //账号等级
+    private int yh_wrongTimes;  //登陆错误次数
+
     public User() {
     }
 

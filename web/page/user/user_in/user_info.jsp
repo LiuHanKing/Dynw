@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="../../comm/comm.jsp" %>
-    <title>user_info</title>
+    <title>用户信息</title>
     <style type="text/css">
         .input_width {
             width: 130px;
@@ -163,7 +163,7 @@
         <label>省份:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
         <select id="pro" name="province" class="input_width">
             <c:forEach items="${provinceList}" var="pro">
-                <option value="${pro.codeid}" <c:if test="${userInfo.province == pro.codeid}">selected</c:if>
+                <option value="${pro.codeid}" <c:if test="${userInfo.province == pro.codeid}">selected</c:if>>
                         ${pro.cityName}
                 </option>
             </c:forEach>

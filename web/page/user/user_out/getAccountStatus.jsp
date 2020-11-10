@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="../../comm/comm.jsp" %>
-    <title>Title</title>
+    <title>查询账号状态</title>
     <link rel="stylesheet" href="source/css/head_sigin.css">
     <style>
         #user_div_table {

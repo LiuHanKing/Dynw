@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="../../comm/comm.jsp" %>
-    <title>forgotpass</title>
+    <title>忘记密码</title>
     <link rel="stylesheet" href="source/css/user.css"/>
     <script type="text/javascript">
         $(function () {

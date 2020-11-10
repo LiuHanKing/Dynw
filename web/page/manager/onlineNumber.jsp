@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="../comm/comm.jsp" %>
-    <title>Title</title>
+    <title>当前在线人数</title>
     <script type="text/javascript">
         /*        function myrefresh() {
                     window.location.reload();

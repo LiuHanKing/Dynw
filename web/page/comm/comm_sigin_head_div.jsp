@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>未登录时的菜单</title>
     <style type="text/css">
         /*设置文本的字体颜色为蓝色*/
         li a {

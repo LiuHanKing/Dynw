@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>已登陆时的菜单</title>
     <link rel="stylesheet" href="source/css/com_user_menu.css">
     <script type="text/javascript" src="source/js/comm_user_menu.js"></script>
 </head>
@@ -54,6 +54,15 @@
                     <ul class="ul_div_menu_help_c">
                         <li>
                             <a href="page/manager/onlineNumber.jsp" class="login_head_sigin" target="iframe_main">在线人数</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="menu_li">
+                    <a>门户管理</a>
+                    <ul class="ul_div_menu_help_c">
+                        <li>
+                            <a href="page/manager/addinform.jsp" class="login_head_sigin" target="iframe_main">添加通知</a>
                         </li>
 
                     </ul>

@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="../../comm/comm.jsp" %>
-    <title>changepass</title>
+    <title>修改密码</title>
     <style type="text/css">
         .form_sigin{
             margin-top:30px;

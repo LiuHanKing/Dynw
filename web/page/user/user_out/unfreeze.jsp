@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="../../comm/comm.jsp" %>
-    <title>Title</title>
+    <title>解除账号冻结</title>
     <style type="text/css">
         #user_getUserStatus_div {
             margin-top: 30px;

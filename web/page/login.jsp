@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="comm/comm.jsp" %>
-    <title>登陆页面</title>
+    <title>登陆</title>
     <script type="text/javascript" src="source/js/login.js"></script>
     <link rel="stylesheet" href="source/css/head_sigin.css">
     <script type="text/javascript">
@@ -70,7 +70,7 @@
 
     </form>
 </div>
-<div id="msg_div">
+<div class="msg_div">
     <span class="errorMsg">${messg}</span>
 </div>
 <%@include file="comm/footer.jsp" %>

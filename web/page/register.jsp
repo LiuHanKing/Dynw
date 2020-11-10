@@ -9,7 +9,7 @@
 <html>
 <head>
     <%@include file="comm/comm.jsp" %>
-    <title>注册页面</title>
+    <title>注册</title>
     <script type="text/javascript" src="source/js/register.js"></script>
     <link rel="stylesheet" href="source/css/head_sigin.css">
 </head>
@@ -78,11 +78,10 @@
         </table>
     </form>
 </div>
-<div id="msg_div">
+<div class="msg_div">
     <span class="errorMsg">
         ${messg}
     </span>
-
 </div>
 <%@include file="comm/footer.jsp" %>
 </body>
