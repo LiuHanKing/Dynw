@@ -10,8 +10,8 @@
 <head>
     <%@include file="comm/comm.jsp" %>
     <title>注册</title>
-    <script type="text/javascript" src="source/js/register.js"></script>
     <link rel="stylesheet" href="source/css/head_sigin.css">
+    <script type="text/javascript" src="source/js/register.js"></script>
 </head>
 <body>
 <div>
@@ -26,14 +26,14 @@
 <div class="user_div">
     <form action="checkCode" method="POST" id="register_form">
         <table>
-<%--            <tr>
-                <td class="user_cont">
-                    用户编号
-                </td>
-                <td colspan="2">
-                    <input type="text" placeholder="长度5-16,字母,数字" class="login_text" name="yhbh" id="yhbh"/>
-                </td>
-            </tr>--%>
+            <%--            <tr>
+                            <td class="user_cont">
+                                用户编号
+                            </td>
+                            <td colspan="2">
+                                <input type="text" placeholder="长度5-16,字母,数字" class="login_text" name="yhbh" id="yhbh"/>
+                            </td>
+                        </tr>--%>
 
             <tr>
                 <td class="user_cont">
@@ -79,7 +79,7 @@
     </form>
 </div>
 <div class="msg_div">
-    <span class="errorMsg">
+    <span id="errorMsg">
         ${messg}
     </span>
 </div>

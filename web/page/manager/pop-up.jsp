@@ -141,7 +141,7 @@
 
         /*设置弹窗菜单的大小*/
         #modal-body_menu {
-            border-right:1px solid black;
+            border-right: 1px solid black;
             width: 34%;
             height: 78%;
         }
@@ -155,12 +155,22 @@
         #modal-body_context h1 {
             text-align: center;
         }
-       a {
-            text-decoration:none;
+
+        a {
+            text-decoration: none;
         }
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
+            //时间戳转日期格式
+            var parserDate = function (date) {
+                var t = Date.parse(date);
+                if (!isNaN(t)) {
+                    return new Date(Date.parse(date.replace(/-/g, "/")));
+                } else {
+                    return new Date();
+                }
+            };
             $.ajax({
                 url: "getInformsPass",
                 type: "get",
@@ -168,10 +178,21 @@
                 data: {},
                 success: function (data) {
                     for (var i = 0; i < data.length; i++) {
-                        var Url="getInformsById?id="+data[i].inf_id;
-                        $("#modal_body_menu_ul").append("<li ><a href="+Url+" target='informs_toshow'>" + data[i].inf_title + "</a></li>");
+
+                        var Url = "getInformsById?id=" + data[i].inf_id;
+                        $("#modal_body_menu_ul").append("<li ><a href=" + Url + " target='informs_toshow'>" + data[i].inf_title + "</a></li>");
+
                     }
+                    var datime=parserDate(data[0].inf_approvalTime);
+                    $("#default_inform").append
+                    ("<hl>"+data[0].inf_title+"</hl>\n" +
+                        "<p>\n" +
+                        "<small>"+"作者："+data[0].inf_author+"</small>\n" +
+                        "<small>"+"发布时间："+datime+"</small>\n" +
+                        "</p>\n" +
+                        "<p>"+data[0].inf_content+"</p>")
                     ;
+
                 },
                 error: function () {
                     console.log("传输失败");
@@ -231,10 +252,8 @@
                 <div class="modal-body_sonBody" id="modal-body_context">
                     <p class="inf_title">通知内容</p>
                     <hr>
-                    <iframe name="informs_toshow"  frameborder="0" noResize="yes" width="100%" height="100%">
-
-                    <span id="inf_author"></span>
-                    <span id="inf_context"></span>
+                    <p id="default_inform"></p>
+                    <iframe name="informs_toshow" frameborder="0" noResize="yes" width="100%" height="100%">
                     </iframe>
                 </div>
             </div>

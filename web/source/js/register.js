@@ -143,7 +143,7 @@ $(function () {
 
 
         //创建密码校验规则函数
-        var password_fun = function () {
+        $("#password").on("blur", function () {
             //获取password输入框的值
             var passObj = $("#password").val();
             //password的校验规则
@@ -161,9 +161,9 @@ $(function () {
                 }
                 ;
             }
-        }
+        });
         //创建确认密码的校验规则函数
-        var repassword_fun = function () {
+        $("#repassword").on("blur", function () {
             //获取password输入框的值
             var passObj = $("#password").val();
             //获取再次输入密码框的值
@@ -182,26 +182,17 @@ $(function () {
                 ;
             }
             ;
-        }
+        })
         //创建验证码校验规则函数
-        var code_function = function () {
+        var yzmFun = function () {
             var codeObj = $("#code").val();
             if (codeObj.length == 0) {
                 $("#errorMsg").text("验证码不能为空");
             } else {
                 $("#errorMsg").text(" ");
             }
-        }
-        //调用yhbh的函数，全都是失去焦点事件
-        $("#password").on("blur", password_fun);
-        $("#repassword").on("blur", repassword_fun);
-        $("#code").on("blur", code_function);
-
-
-        // function startTimerPage() {//页面跳转计时器
-        //     setInterval(location.href = "page/login.jsp", 10000);//刷新定时器
-        // };
-
+        };
+        $("#code").on("blur", yzmFun);
 
         $("#register_submit").on("click", function () {
             var emailObj = $("#email").val();
@@ -220,12 +211,12 @@ $(function () {
                     data: $("#register_form").serialize(),
                     success: function (data) {
                         //var datas=JSON.stringify(data)
-                       // console.log(data+data.message);
+                        // console.log(data+data.message);
                         /*转换为json字符串*/
-                        var message=JSON.stringify(data);
+                        var message = JSON.stringify(data);
                         //alert(message);
                         /*转换为json对象*/
-                        msg=JSON.parse(message).messg;
+                        msg = JSON.parse(message).messg;
                         console.log(msg);
                         alert(msg);
                         //startTimerPage();
