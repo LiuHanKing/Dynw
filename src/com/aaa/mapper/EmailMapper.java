@@ -10,5 +10,6 @@ import org.springframework.stereotype.Component;
 */
 @Component
 public interface EmailMapper {
+    //插入邮件记录
     public boolean addemailTo(@Param("email") Email email);
 }

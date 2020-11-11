@@ -1,17 +1,17 @@
-package com.aaa.mapper;
+package com.aaa.service;
 
 import com.aaa.model.Informs;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /*
 @author lzw
-@create 2020/11/10 9:48
+@create 2020/11/10 11:10
 */
-@Component
-public interface InformsMapper {
+@Service
+public interface InformsService {
     //添加通知
     public boolean addInforms(@Param("informs") Informs informs);
     //获取所有通知
@@ -21,7 +21,7 @@ public interface InformsMapper {
     //获取所有未审批的通知
     public List<Informs> getInformsUnApproval();
     //通知审批状态修改
-    public boolean updateApprovalStatus(@Param("informs") Informs informs);
+    public boolean updateApprovalStatus(Informs informs);
     //根据通知来获取通知
     public Informs getInformsById(int id);
 }

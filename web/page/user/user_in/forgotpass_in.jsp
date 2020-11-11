@@ -10,6 +10,7 @@
 <head>
     <%@include file="../../comm/comm.jsp" %>
     <title>重置密码</title>
+    <link rel="stylesheet" href="source/css/com_user_menu.css">
     <script type="text/javascript">
         $(function () {
             //倒计时
@@ -115,7 +116,7 @@
     </script>
 </head>
 <body>
-<div>
+<div class="user_div">
     <form>
         <label>邮箱地址:&nbsp&nbsp&nbsp&nbsp</label>
         <input type="email" id="email" name="email"/>

@@ -8,14 +8,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%@include file="../../comm/comm.jsp" %>
     <title>Title</title>
+    <style type="text/css">
+        div {
+            width: 385px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size:38px;
+        }
+    </style>
 </head>
 <body>
 <div>
-
-</div>
-<div>
-    <iframe name="iframe_main" scrolling="no" frameBorder="no" ></iframe>
+    <hl>${infor.inf_title}</hl>
+    <p>
+        <small>作者：${infor.inf_author}</small>
+        <small>发布时间：<fmt:formatDate value="${infor.inf_approvalTime}" pattern="yyyy-MM-dd HH:mm:ss" /></small>
+    </p>
+    <p>${infor.inf_content}</p>
 </div>
 </body>
 </html>

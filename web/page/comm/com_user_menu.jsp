@@ -62,7 +62,10 @@
                     <a>门户管理</a>
                     <ul class="ul_div_menu_help_c">
                         <li>
-                            <a href="page/manager/addinform.jsp" class="login_head_sigin" target="iframe_main">添加通知</a>
+                            <a href="page/manager/addinform.jsp" class="login_head_sigin" target="iframe_main">添加通知消息</a>
+                        </li>
+                        <li>
+                            <a href="page/manager/approvalInform.jsp" class="login_head_sigin" target="iframe_main">审批通知消息</a>
                         </li>
 
                     </ul>

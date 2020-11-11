@@ -40,13 +40,13 @@
         and yh_scbz='0'
     </update>
     <select id="selectYhbh" resultType="integer" parameterType="string">
-        select * from yh_user
+        <include refid="selectYhUser"/>
         where yh_yhbh =#{yhbh}
         and  yh_status in ('0','1','2')
         and yh_scbz='0'
     </select>
     <select id="selectEmail" resultType="integer" parameterType="string">
-       select * from yh_user
+        <include refid="selectYhUser"/>
         where yh_email =#{email}
         and  yh_status in ('0','1','2')
         and yh_scbz='0'

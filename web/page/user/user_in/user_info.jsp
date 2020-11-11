@@ -10,6 +10,7 @@
 <head>
     <%@include file="../../comm/comm.jsp" %>
     <title>用户信息</title>
+    <link rel="stylesheet" href="source/css/com_user_menu.css">
     <style type="text/css">
         .input_width {
             width: 130px;
@@ -142,7 +143,7 @@
 </head>
 <body>
 <span class="message"></span>
-<div id="user_info_div">
+<div class="user_div">
     <form id="userinfo_form">
         <input id="userid" name="userid" value="${sessionScope.userid}" hidden/>
         <input id="yh_id" name="yh_id" value="${userInfo.yh_id}" hidden/>
@@ -186,7 +187,6 @@
         <br><br>
         <label>爱好:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
         <input type="text" value="${userInfo.hobby}" name="hobby" id="hobby" placeholder="多个爱好中间中;分隔"/> <br><br>
-        <label><input type="reset" value="重置" id="re_input"/></label>
         <label><input type="submit" value="确认修改" id="sub_input"/> </label>
     </form>
 </div>

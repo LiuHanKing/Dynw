@@ -10,6 +10,7 @@
 <head>
     <%@include file="../comm/comm.jsp" %>
     <title>添加通知</title>
+    <link rel="stylesheet" href="source/css/com_user_menu.css">
     <style type="text/css">
         #informsTitle {
             width: 300px;
@@ -22,10 +23,7 @@
             height: 200px;
             border: 1px solid black;
         }
-        addInform_div{
-            margin-top: 5px;
-            margin-left: 5px;
-        }
+
     </style>
     <script type="text/javascript">
         $(function () {
@@ -66,7 +64,7 @@
     </script>
 </head>
 <body>
-<div id="addInform_div">
+<div class="user_div">
     <form>
         <label>通知标题</label>
         <br>

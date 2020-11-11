@@ -10,6 +10,7 @@
 <head>
     <%@include file="../../comm/comm.jsp" %>
     <title>修改密码</title>
+    <link rel="stylesheet" href="source/css/com_user_menu.css">
     <style type="text/css">
         .form_sigin{
             margin-top:30px;
@@ -106,7 +107,7 @@
 </head>
 <body>
 
-<div >
+<div class="user_div">
     <form id="change_pass_form">
         <label>旧密码:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
         <input type="password" id="oldpassword" name="oldpassword"/><br><br>

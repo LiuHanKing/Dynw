@@ -19,11 +19,11 @@ public class Informs {
     private int inf_approvalStatus;     //审批状态
     private Date inf_approvalTime;      //审批时间
     private String inf_deleteStatus;    //删除标志
-
+    private String inf_remark;          //备注
     public Informs() {
     }
 
-    public Informs(int inf_id, String inf_title, String inf_author, String inf_content, Date inf_createTime, int inf_approvalStatus, Date inf_approvalTime, String inf_deleteStatus) {
+    public Informs(int inf_id, String inf_title, String inf_author, String inf_content, Date inf_createTime, int inf_approvalStatus, Date inf_approvalTime, String inf_deleteStatus, String inf_remark) {
         this.inf_id = inf_id;
         this.inf_title = inf_title;
         this.inf_author = inf_author;
@@ -32,6 +32,7 @@ public class Informs {
         this.inf_approvalStatus = inf_approvalStatus;
         this.inf_approvalTime = inf_approvalTime;
         this.inf_deleteStatus = inf_deleteStatus;
+        this.inf_remark = inf_remark;
     }
 
     @Override
@@ -45,6 +46,7 @@ public class Informs {
                 ", inf_approvalStatus=" + inf_approvalStatus +
                 ", inf_approvalTime=" + inf_approvalTime +
                 ", inf_deleteStatus='" + inf_deleteStatus + '\'' +
+                ", inf_remark='" + inf_remark + '\'' +
                 '}';
     }
 
@@ -114,5 +116,13 @@ public class Informs {
 
     public void setInf_deleteStatus(String inf_deleteStatus) {
         this.inf_deleteStatus = inf_deleteStatus;
+    }
+
+    public String getInf_remark() {
+        return inf_remark;
+    }
+
+    public void setInf_remark(String inf_remark) {
+        this.inf_remark = inf_remark;
     }
 }

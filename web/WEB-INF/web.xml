@@ -44,20 +44,20 @@
         <url-pattern>/kaptcha.jpg</url-pattern>
     </servlet-mapping>
 
-    <!--error-page 标签配置，服务器出错之后，自动跳转的页面 -->
+<!--    &lt;!&ndash;error-page 标签配置，服务器出错之后，自动跳转的页面 &ndash;&gt;
     <error-page>
-        <!--error-code 是错误类型 -->
+        &lt;!&ndash;error-code 是错误类型 &ndash;&gt;
         <error-code>500</error-code>
-        <!--location 标签表示。要跳转去的页面路径 -->
+        &lt;!&ndash;location 标签表示。要跳转去的页面路径 &ndash;&gt;
         <location>/page/error/error500.jsp</location>
     </error-page>
-    <!--error-page 标签配置，服务器出错之后，自动跳转的页面 -->
+    &lt;!&ndash;error-page 标签配置，服务器出错之后，自动跳转的页面 &ndash;&gt;
     <error-page>
-        <!--error-code 是错误类型 -->
+        &lt;!&ndash;error-code 是错误类型 &ndash;&gt;
         <error-code>404</error-code>
-        <!--location 标签表示。要跳转去的页面路径 -->
+        &lt;!&ndash;location 标签表示。要跳转去的页面路径 &ndash;&gt;
         <location>/page/error/error404.jsp</location>
-    </error-page>
+    </error-page>-->
 
 
 </web-app>

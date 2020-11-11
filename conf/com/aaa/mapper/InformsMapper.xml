@@ -4,8 +4,40 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.mapper.InformsMapper">
 
+    <sql id="selectInforms">
+    select * from informs
+    </sql>
     <insert id="addInforms" parameterType="Informs">
         insert into informs (inf_title,inf_author,inf_content)
         values(#{informs.inf_title},#{informs.inf_author},#{informs.inf_content})
     </insert>
+    <update id="updateApprovalStatus">
+        update informs
+        set
+        inf_approvalStatus=#{informs.inf_approvalStatus},
+        inf_approvalTime=#{informs.inf_approvalTime},
+        inf_deleteStatus=#{informs.inf_deleteStatus},
+        inf_remark=#{informs.inf_remark}
+        where inf_id=#{informs.inf_id}
+    </update>
+    <select id="getInformsPass" resultType="com.aaa.model.Informs">
+        <include refid="selectInforms"/>
+        where inf_approvalStatus=1
+        order by inf_id desc
+    </select>
+    <select id="getInformsFail" resultType="com.aaa.model.Informs">
+        <include refid="selectInforms"/>
+         where inf_approvalStatus=2
+         order by inf_id asc
+    </select>
+    <select id="getInformsUnApproval" resultType="com.aaa.model.Informs">
+        <include refid="selectInforms"/>
+         where inf_approvalStatus=0
+         order by inf_id asc
+    </select>
+    <select id="getInformsById" resultType="com.aaa.model.Informs">
+        <include refid="selectInforms"/>
+        where inf_id=#{id}
+    </select>
+
 </mapper>

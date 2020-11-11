@@ -1,9 +1,7 @@
 package com.aaa.service.Impl;
 
 import com.aaa.mapper.EmailMapper;
-import com.aaa.mapper.EmailTempMapper;
 import com.aaa.model.Email;
-import com.aaa.model.EmailTemp;
 import com.aaa.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

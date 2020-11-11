@@ -10,6 +10,7 @@
 <head>
     <%@include file="../comm/comm.jsp" %>
     <title>当前在线人数</title>
+    <link rel="stylesheet" href="source/css/com_user_menu.css">
     <script type="text/javascript">
         /*        function myrefresh() {
                     window.location.reload();
@@ -18,6 +19,7 @@
         function startTimer() {//开始计数
             setInterval(timer, 1000);//刷新定时器
         };
+
         function timer() {//计数器
             $("#onlie_number").text(<%=OnlineListener.getOnlineNumberCount() %>);
         };
@@ -29,9 +31,8 @@
     </script>
 </head>
 <body>
-<div></div>
-<div></div>
-<div>
+
+<div class="user_div">
     <span>当前在线人数：<%--<%=OnlineListener.getOnlineNumberCount() %>--%> </span><span id="onlie_number"></span>
     <inpput id="a"/>
 </div>

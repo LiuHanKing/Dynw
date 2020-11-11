@@ -15,11 +15,6 @@
             text-decoration: none;
         }
 
-        .user_div {
-            min-height: 300px;
-            height: auto;
-        }
-
         #main_body_menu {
             width: 380px;
             position: absolute;
@@ -34,6 +29,11 @@
         #main_body_concent {
             margin-left: 380px;
         }
+
+        #user_main_div {
+            min-height: 320px;
+            height: auto;
+        }
     </style>
     <script type="text/javascript">
         $(function () {
@@ -42,8 +42,8 @@
                     var ip = returnCitySN.cip;
                     var str64 = window.btoa(ip);
                     if (confirm("是否确认退出登陆？")) {
-                        location.href="logout?ipAddress="+str64;
-      /*                  $.ajax({
+                        // location.href = "logout?ipAddress=" + str64;
+                        $.ajax({
                             url: "logout",
                             type: "post",
                             dataType: "json",
@@ -51,11 +51,16 @@
                                 "ipAddress": str64
                             },
                             success: function (data) {
+                                console.log(data);
+                                if(data){
+                                    $(window).attr("location","page/login.jsp")
+                                }
+
                             },
                             error: function () {
                                 console.log("传输失败");
                             }
-                        })*/
+                        })
                     }
                 })
 
@@ -72,18 +77,20 @@
 <div>
     <%@include file="../../comm/com_user_menu.jsp" %>
 </div>
-<div class="user_div">
-    <div id="main_body_menu" class="main_body_div">
-        <ul>
-            <li>2020年1月</li>
-            <li>2020年1月</li>
-            <li>2020年1月</li>
-            <li>2020年1月</li>
-        </ul>
-    </div>
-    <div class="main_body_div" id="main_body_concent">
-        <iframe name="iframe_main" width="80%" height="100%" frameborder="0" noResize="yes"></iframe>
-    </div>
+<div id="user_main_div">
+    <iframe name="iframe_main" width="80%" height="100%" frameborder="0" noResize="yes">
+        <div id="main_body_menu" class="main_body_div">
+            <ul>
+                <li>2020年1月</li>
+                <li>2020年1月</li>
+                <li>2020年1月</li>
+                <li>2020年1月</li>
+            </ul>
+        </div>
+        <div class="main_body_div" id="main_body_concent">
+
+        </div>
+    </iframe>
 </div>
 <div id="main_foor_div">
     <%@include file="../../comm/footer.jsp" %>
