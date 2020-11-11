@@ -163,14 +163,30 @@
     <script type="text/javascript">
         $(document).ready(function () {
             //时间戳转日期格式
-            var parserDate = function (date) {
-                var t = Date.parse(date);
-                if (!isNaN(t)) {
-                    return new Date(Date.parse(date.replace(/-/g, "/")));
-                } else {
-                    return new Date();
+            function fmtDate(obj) {
+                if (obj == null || obj == "") {
+                    return 0;
                 }
-            };
+                var date = new Date(obj);
+                var y = 1900 + date.getYear();
+                var m = "0" + (date.getMonth() + 1);
+                var d = "0" + date.getDate();
+                return y + "-" + m.substring(m.length - 2, m.length) + "-" + d.substring(d.length - 2, d.length);
+            }
+            function formatDate(obj) {
+                if (obj == null || obj == "") {
+                    return 0;
+                }
+                var obj = new Date(obj);
+                var year = 1900 + obj.getYear();
+                var month = "0" + (obj.getMonth() + 1);
+                var date = "0" + obj.getDate();
+                var hour = "0" + obj.getHours();
+                var minute = "0" + obj.getMinutes();
+                var second = "0" + obj.getSeconds();
+                return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length) + " " + hour.substring(hour.length - 2, hour.length) + ":"
+                    + minute.substring(minute.length - 2, minute.length) + ":" + second.substring(second.length - 2, second.length);
+            }
             $.ajax({
                 url: "getInformsPass",
                 type: "get",
@@ -180,10 +196,10 @@
                     for (var i = 0; i < data.length; i++) {
 
                         var Url = "getInformsById?id=" + data[i].inf_id;
-                        $("#modal_body_menu_ul").append("<li ><a href=" + Url + " target='informs_toshow'>" + data[i].inf_title + "</a></li>");
+                        $("#modal_body_menu_ul").append("<li ><a href=" + Url + " id=i target='informs_toshow'>" + data[i].inf_title + "</a></li>");
 
                     }
-                    var datime=parserDate(data[0].inf_approvalTime);
+                    var datime=formatDate(data[0].inf_approvalTime);
                     $("#default_inform").append
                     ("<hl>"+data[0].inf_title+"</hl>\n" +
                         "<p>\n" +
@@ -192,12 +208,18 @@
                         "</p>\n" +
                         "<p>"+data[0].inf_content+"</p>")
                     ;
+                    $("li").on("click",function () {
+                        // $("#default_inform").get($("#default_inform").children().length - 1).remove();
+                        //$("#default_inform").remove();
+                        $("#default_inform").empty();
+                    })
 
                 },
                 error: function () {
                     console.log("传输失败");
                 }
             })
+
         })
 
 

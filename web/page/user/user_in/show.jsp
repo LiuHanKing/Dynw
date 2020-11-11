@@ -13,12 +13,9 @@
     <style type="text/css">
         div {
             width: 380px;
+            text-align: center;
         }
 
-        h1 {
-            text-align: center;
-            font-size:38px;
-        }
     </style>
 </head>
 <body>

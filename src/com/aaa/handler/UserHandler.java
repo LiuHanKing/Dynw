@@ -125,7 +125,7 @@ public class UserHandler {
         BASE64Encoder encoder = new BASE64Encoder();
         String base64BeforeStrName = encoder.encode(StringName.getBytes());
         //生成用户编号
-        String yhbh = (base64BeforeStrName.substring(1, 4) + (System.currentTimeMillis() + "").substring(9, 13)).substring(1,8);
+        String yhbh = base64BeforeStrName.substring(1, 4) + (System.currentTimeMillis() + "").substring(9, 13);
         //判断用户编号是否可用
         if (e == null) {
             User user = new User();
