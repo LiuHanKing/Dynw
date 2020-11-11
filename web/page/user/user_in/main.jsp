@@ -70,7 +70,7 @@
     </script>
 </head>
 <body>
-
+<%@include file="../../manager/pop-up.jsp" %>
 <div>
     ${messg}
 </div>

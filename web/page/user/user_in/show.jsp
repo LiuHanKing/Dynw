@@ -8,11 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@include file="../../comm/comm.jsp" %>
+<%--    <%@include file="../../comm/comm.jsp" %>--%>
     <title>Title</title>
     <style type="text/css">
         div {
-            width: 385px;
+            width: 380px;
         }
 
         h1 {
