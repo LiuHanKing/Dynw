@@ -5,6 +5,8 @@ import com.aaa.model.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /*
 @author lzw
 @create 2020/9/25 19:30
@@ -36,7 +38,7 @@ public interface UserMapper {
     public User getUserStatus(@Param("account") String account);
 
     //更改错误登陆次数
-    public boolean updateUserWrongTimes(int times, String yhaccount);
+    public boolean updateUserWrongTimes(int times, String yhaccount, Date wrongDate);
 
     //冻结账号
     public boolean updateUserBeFreeze(String yhaccount);

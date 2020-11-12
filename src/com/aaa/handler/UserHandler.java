@@ -15,6 +15,7 @@ import sun.misc.BASE64Encoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,9 @@ public class UserHandler {
         System.out.println("-------确认用户编号是否可使用------");
         //此用户编号不可以注册
         return 2;
-    };
+    }
+
+    ;
 
     //查询邮箱地址是否已被占用
     @RequestMapping(value = "selectemail", method = RequestMethod.POST)
@@ -65,7 +68,9 @@ public class UserHandler {
         }
         System.out.println("-------确认邮箱是否可使用------");
         return 2;
-    };
+    }
+
+    ;
 
     //添加用户
     @RequestMapping(value = "/adduser")
@@ -78,7 +83,9 @@ public class UserHandler {
         model.addAttribute("messg", "用户添加失败");
         System.out.println("-------添加用户------");
         return "main";
-    };
+    }
+
+    ;
 
     //发送验证码，并记录发送邮件记录
     @RequestMapping(value = "sendemail", method = RequestMethod.POST)
@@ -105,7 +112,9 @@ public class UserHandler {
         }
         System.out.println("-------已经发送邮件------");
         return 1;
-    };
+    }
+
+    ;
 
     //校验邮件验证码并注册账号
     @RequestMapping(value = "/checkCode", method = RequestMethod.POST)
@@ -152,7 +161,9 @@ public class UserHandler {
         map.put("messg", "用户编号或邮箱地址不可用");
         System.out.println("-------确认邮件验证码------");
         return map;
-    };
+    }
+
+    ;
 
     //用户登陆,并记录登陆日志
     @RequestMapping(value = "/login")
@@ -161,110 +172,107 @@ public class UserHandler {
         //登陆状态
         String loginstatu = null;
         //登陆日志
-        LoginLog loginLog = null;
-        try {
-            //查询账号状态
-            User user1 = userService.getUserStatus(username);
-            //账号错误次数
-            int UserLoginErrorTimes = user1.getYh_wrongTimes();
-            // 获取 Session 中的谷歌验证码
-            String token = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-            // 删除 Session 中的谷歌验证码
-            request.getSession().removeAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-            loginstatu = null;
-            //System.out.println(token + "--------------" + GoogleCode + "----------------" + username);
-            String loginAction = "login";
-            loginLog = new LoginLog();
-            loginLog.setLogin_user(username);
-            loginLog.setLogin_action(loginAction);
-            loginLog.setLogin_address(ipAddress);
-            //判断验证码是否一致
-            if (token.equalsIgnoreCase(GoogleCode)) {
-                System.out.println("验证码正确----------------");
-                HttpSession session = request.getSession();
-                //查询账号密码是否一致
-                User user = userService.getUser(username, password);
-                //根据输入的账号密码查询出的结果进行判断，存在账号的情况
-                if (user != null) {
-                    //账号状态和删除标志不同的各种情况，返回对应的提示信息
-                    if (user.getYh_status().equals("0") && user.getYh_scbz().equals("0")) {
-                        loginstatu = "0";
-                        session.setAttribute("username", user.getYh_yname());
-                        session.setAttribute("userid", user.getYh_id());
-                        session.setAttribute("yhcaste", user.getYh_caste());
-                        //添加登陆日志
-                        loginLog.setLogin_status(loginstatu);
-                        //重置错误次数
-                        userService.updateUserWrongTimes(0, username);
-                        return "user/user_in/main";
-                    } else if (user.getYh_status().equals("1") && user.getYh_scbz().equals("0")) {
-                        model.addAttribute("messg", "您的账号已被冻结！！！请到帮助进行处理");
-                        loginstatu = "1";
-                        loginLog.setLogin_status(loginstatu);
-                        boolean b = userService.addLoginLog(loginLog);
-                        return "login";
-                    } else if (user.getYh_status().equals("2") && user.getYh_scbz().equals("0")) {
-                        model.addAttribute("messg", "您的账号封停有效！！！请到帮助进行处理");
-                        loginstatu = "1";
-                        loginLog.setLogin_status(loginstatu);
-                        boolean b = userService.addLoginLog(loginLog);
-                        return "login";
-                    } else if (user.getYh_status().equals("3") || user.getYh_scbz().equals("1")) {
-                        model.addAttribute("messg", "您的账号无效！！！请到帮助进行处理");
-                        loginstatu = "1";
-                        loginLog.setLogin_status(loginstatu);
-                        boolean b = userService.addLoginLog(loginLog);
-                        return "login";
-                    } else {
-                        loginstatu = "1";
-                        loginLog.setLogin_status(loginstatu);
-                        model.addAttribute("messg", "请到帮助解决登陆问题");
-                        boolean b = userService.addLoginLog(loginLog);
-                        return "login";
-                    }
+        LoginLog loginLog = new LoginLog();
+        ;
+        //查询账号状态
+        User user1 = userService.getUserStatus(username);
+        //账号错误次数
+        int UserLoginErrorTimes = user1.getYh_wrongTimes();
+        // 获取 Session 中的谷歌验证码
+        String token = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+        // 删除 Session 中的谷歌验证码
+        request.getSession().removeAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+        //System.out.println(token + "--------------" + GoogleCode + "----------------" + username);
+        String loginAction = "login";
+        loginLog.setLogin_user(username);
+        loginLog.setLogin_action(loginAction);
+        loginLog.setLogin_address(ipAddress);
+        //判断验证码是否一致
+        if (token.equalsIgnoreCase(GoogleCode)) {
+            System.out.println("验证码正确----------------");
+            HttpSession session = request.getSession();
+            //查询账号密码是否一致
+            User user = userService.getUser(username, password);
+            //根据输入的账号密码查询出的结果进行判断，存在账号的情况
+            if (user != null) {
+                //账号状态和删除标志不同的各种情况，返回对应的提示信息
+                if (user.getYh_status().equals("0") && user.getYh_scbz().equals("0")) {
+                    loginstatu = "0";
+                    session.setAttribute("username", user.getYh_yname());
+                    session.setAttribute("userid", user.getYh_id());
+                    session.setAttribute("yhcaste", user.getYh_caste());
+                    //添加登陆日志
+                    loginLog.setLogin_status(loginstatu);
+                    //重置错误次数
+                    userService.updateUserWrongTimes(0, username, new Date());
+                    return "user/user_in/main";
+                } else if (user.getYh_status().equals("1") && user.getYh_scbz().equals("0")) {
+                    model.addAttribute("messg", "您的账号已被冻结！！！请到帮助进行处理");
+                    loginstatu = "1";
+                    loginLog.setLogin_status(loginstatu);
+                    boolean b = userService.addLoginLog(loginLog);
+                    return "login";
+                } else if (user.getYh_status().equals("2") && user.getYh_scbz().equals("0")) {
+                    model.addAttribute("messg", "您的账号封停有效！！！请到帮助进行处理");
+                    loginstatu = "1";
+                    loginLog.setLogin_status(loginstatu);
+                    boolean b = userService.addLoginLog(loginLog);
+                    return "login";
+                } else if (user.getYh_status().equals("3") || user.getYh_scbz().equals("1")) {
+                    model.addAttribute("messg", "您的账号无效！！！请到帮助进行处理");
+                    loginstatu = "1";
+                    loginLog.setLogin_status(loginstatu);
+                    boolean b = userService.addLoginLog(loginLog);
+                    return "login";
+                } else {
+                    loginstatu = "1";
+                    loginLog.setLogin_status(loginstatu);
+                    model.addAttribute("messg", "请到帮助解决登陆问题");
+                    boolean b = userService.addLoginLog(loginLog);
+                    return "login";
                 }
-
-            } else {
-                //验证码错误的情况
-                if (UserLoginErrorTimes <= 2) {
-                    boolean ifUp = userService.updateUserWrongTimes(UserLoginErrorTimes+1, username);
-                    if (ifUp) {
-                        model.addAttribute("messg", "当前错误次数：" + (UserLoginErrorTimes + 1) + "。当错误次数达到三次，账号会被冻结！！！");
-                    }
-                } else if (UserLoginErrorTimes == 3) {
-                    boolean ifBe = userService.updateUserBeFreeze(username);
-                    if (ifBe) {
-                        model.addAttribute("messg", "当前错误次数已达到3次，账号已冻结。请到帮助解除冻结！！！");
-                    }
-                }
-                loginstatu = "1";
-                loginLog.setLogin_status(loginstatu);
-                System.out.println("验证码错误");
-                model.addAttribute("messg", "验证码错误");
-                boolean b = userService.addLoginLog(loginLog);
-                System.out.println("-------验证码错误------");
-                return "login";
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            //密码错误的情况
+            if (UserLoginErrorTimes <= 2) {
+                boolean ifUp = userService.updateUserWrongTimes(UserLoginErrorTimes + 1, username, new Date());
+                if (ifUp) {
+                    model.addAttribute("messg", "当前错误次数：" + (UserLoginErrorTimes + 1) + "。当错误次数达到三次，账号会被冻结！！！");
+                }
+            } else if (UserLoginErrorTimes == 3) {
+                boolean ifBe = userService.updateUserBeFreeze(username);
+                if (ifBe) {
+                    model.addAttribute("messg", "当前错误次数已达到3次，账号已冻结。请5分钟之后再次尝试！！！");
+                }
+            }
+            loginstatu = "1";
+            loginLog.setLogin_status(loginstatu);
+            System.out.println("密码错误");
+            //model.addAttribute("messg", "密码错误");
+            boolean b = userService.addLoginLog(loginLog);
+            System.out.println("-------密码错误------");
+            return "login";
+
         }
         loginstatu = "1";
         loginLog.setLogin_status(loginstatu);
-        model.addAttribute("messg", "请到帮助");
+        System.out.println("验证码错误");
+        model.addAttribute("messg", "验证码错误");
         boolean b = userService.addLoginLog(loginLog);
-        System.out.println("-------请到帮助------");
+        System.out.println("-------验证码错误------");
         return "login";
-    };
+    }
+
+    ;
 
     //用户注销登录
     @RequestMapping(value = "logout")
     @ResponseBody
-    public boolean selectyhbh(Model model,String ipAddress, HttpServletRequest request) throws IOException {
+    public boolean selectyhbh(Model model, String ipAddress, HttpServletRequest request) throws IOException {
         System.out.println("-------注销登陆-----------");
         HttpSession session = request.getSession();
         String loginAction = "logout";
         LoginLog loginLog = new LoginLog();
-        String username= (String) session.getAttribute("username");
+        String username = (String) session.getAttribute("username");
         loginLog.setLogin_user(username);
         loginLog.setLogin_action(loginAction);
         loginLog.setLogin_status("0");
@@ -276,7 +284,9 @@ public class UserHandler {
         session.invalidate();
         System.out.println("-------注销登陆-----------");
         return true;
-    };
+    }
+
+    ;
 
     //检查用户的旧密码是否正确
     @RequestMapping(value = "checkoldpass", method = RequestMethod.POST)
@@ -288,7 +298,9 @@ public class UserHandler {
             return true;
         }
         return false;
-    };
+    }
+
+    ;
 
     //修改用户密码
     @RequestMapping(value = "changepass", method = RequestMethod.POST)
@@ -377,7 +389,7 @@ public class UserHandler {
         if (yzmcode.equals(yzmcode)) {
             isUnfreeze = userService.updateUserFreeze(email);
             if (isUnfreeze) {
-                userService.updateUserWrongTimes(0, email);
+                userService.updateUserWrongTimes(0, email, new Date());
             }
         }
         return isUnfreeze;

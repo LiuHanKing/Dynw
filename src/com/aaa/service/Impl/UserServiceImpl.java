@@ -7,6 +7,8 @@ import com.aaa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /*
 @author lzw
 @create 2020/9/25 22:46
@@ -57,8 +59,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean updateUserWrongTimes(int times, String yhaccount) {
-        return userMapper.updateUserWrongTimes(times,yhaccount);
+    public boolean updateUserWrongTimes(int times, String yhaccount, Date wrongDate) {
+        return userMapper.updateUserWrongTimes(times,yhaccount,wrongDate);
     }
 
     @Override

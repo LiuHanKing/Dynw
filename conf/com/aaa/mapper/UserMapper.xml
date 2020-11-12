@@ -28,7 +28,8 @@
         and yh_scbz='0'
     </update>
     <update id="updateUserWrongTimes">
-        update yh_user set yh_wrongTimes=#{param1}
+        update yh_user set yh_wrongTimes=#{param1},
+        yh_wrongDate=#{param3}
         where (yh_yhbh=#{param2}
         or yh_email=#{param2})
         and yh_scbz='0'

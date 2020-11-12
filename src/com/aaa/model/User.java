@@ -2,6 +2,8 @@ package com.aaa.model;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 /*
 @author lzw
 @create 2020/9/25 19:25
@@ -18,8 +20,38 @@ public class User {
     private String yh_yname;    //用户名
     private String yh_caste;    //账号等级
     private int yh_wrongTimes;  //登陆错误次数
+    private Date yh_wrongDate;  //修改登陆状态时间
 
     public User() {
+    }
+
+    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz, String yh_yname, String yh_caste, int yh_wrongTimes, Date yh_wrongDate) {
+        this.yh_id = yh_id;
+        this.yh_yhbh = yh_yhbh;
+        this.yh_password = yh_password;
+        this.yh_email = yh_email;
+        this.yh_status = yh_status;
+        this.yh_scbz = yh_scbz;
+        this.yh_yname = yh_yname;
+        this.yh_caste = yh_caste;
+        this.yh_wrongTimes = yh_wrongTimes;
+        this.yh_wrongDate = yh_wrongDate;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "yh_id=" + yh_id +
+                ", yh_yhbh='" + yh_yhbh + '\'' +
+                ", yh_password='" + yh_password + '\'' +
+                ", yh_email='" + yh_email + '\'' +
+                ", yh_status='" + yh_status + '\'' +
+                ", yh_scbz='" + yh_scbz + '\'' +
+                ", yh_yname='" + yh_yname + '\'' +
+                ", yh_caste='" + yh_caste + '\'' +
+                ", yh_wrongTimes=" + yh_wrongTimes +
+                ", yh_wrongDate=" + yh_wrongDate +
+                '}';
     }
 
     public static long getSerialVersionUID() {
@@ -98,30 +130,11 @@ public class User {
         this.yh_wrongTimes = yh_wrongTimes;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "yh_id=" + yh_id +
-                ", yh_yhbh='" + yh_yhbh + '\'' +
-                ", yh_password='" + yh_password + '\'' +
-                ", yh_email='" + yh_email + '\'' +
-                ", yh_status='" + yh_status + '\'' +
-                ", yh_scbz='" + yh_scbz + '\'' +
-                ", yh_yname='" + yh_yname + '\'' +
-                ", yh_caste='" + yh_caste + '\'' +
-                ", yh_wrongTimes=" + yh_wrongTimes +
-                '}';
+    public Date getYh_wrongDate() {
+        return yh_wrongDate;
     }
 
-    public User(int yh_id, String yh_yhbh, String yh_password, String yh_email, String yh_status, String yh_scbz, String yh_yname, String yh_caste, int yh_wrongTimes) {
-        this.yh_id = yh_id;
-        this.yh_yhbh = yh_yhbh;
-        this.yh_password = yh_password;
-        this.yh_email = yh_email;
-        this.yh_status = yh_status;
-        this.yh_scbz = yh_scbz;
-        this.yh_yname = yh_yname;
-        this.yh_caste = yh_caste;
-        this.yh_wrongTimes = yh_wrongTimes;
+    public void setYh_wrongDate(Date yh_wrongDate) {
+        this.yh_wrongDate = yh_wrongDate;
     }
 }
