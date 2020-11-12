@@ -1,0 +1,71 @@
+用户表
+DROP TABLE IF EXISTS `yh_user`;
+CREATE TABLE `yh_user`  (
+  `yh_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'yh_user表主键',
+  `yh_yhbh` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户编号',
+  `yh_password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户密码',
+  `yh_email` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户邮箱地址',
+  `yh_status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '用户账号状态：0，正常;1，冻结;2封号;',
+  `yh_scbz` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '删除标志：0，未删除;1已删除;',
+  `yh_yname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `yh_caste` varchar(2) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '账号等级',
+  `yh_wrongTimes` int(11) NOT NULL DEFAULT 0 COMMENT '登陆错误次数',
+  `yh_wrongDate` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '修改登陆状态时间',
+  PRIMARY KEY (`yh_id`) USING BTREE,
+  UNIQUE INDEX `yh_email`(`yh_email`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+
+#发送邮件表
+create table emailTo(
+id int primary key auto_increment comment 'emailTos的主键',
+toEmail varchar(100) comment '接收邮箱地址',
+context varchar(100) comment '邮件内容',
+sendTime datetime default CURRENT_TIMESTAMP comment '发送时间'
+)comment '发送邮件表';
+
+#用户信息表
+create table yh_info(
+   yh_id int(11) primary key  comment 'yh_id主键',
+   yhbh varchar(50) comment '用户编号',
+   gender int(1) comment '性别:0、女;1,男',
+   brithday datetime comment '出生日期',
+   hobby varchar(255)comment '爱好',,
+   province varchar(12) comment '省市',
+   city varchar(12) comment '地市',
+   counties varchar(12) comment '县区',
+   phoneNumber varchar(11) comment '手机号',
+   email varchar(100) comment '邮箱地址',
+   homeAddres varchar(255) comment '家庭住址'
+)comment '用户信息表';
+
+#字典表
+create table dict(
+    dict_id int primary key auto_increment comment '字典表主键',
+    kind varchar(10) comment '字典的种类',
+    code varchar(20) comment '代码',
+    detail varchar(20) comment '注释',
+    dict_status varchar(1) comment '字典表的状态'
+)comment '字典表';
+
+#通知信息表
+create table informs(
+inf_id int key auto_increment comment 'informs的主键',
+inf_title varchar(255) not null comment '标题',
+inf_author varchar(255) not null comment '作者',
+inf_content text not null comment '内容',
+inf_createTime datetime default CURRENT_TIMESTAMP comment '编辑时间',
+inf_approvalStatus int default 0 comment '审批状态:0:已编辑未审批;1:审批通过发布;2:审批不通过;',
+inf_approvalTime datetime comment '审批时间',
+inf_deleteStatus char default '0' comment '删除标志：0，未删除;1已删除;',
+inf_remark text comment '备注'
+)comment '通知信息表';
+
+create table log_login(
+id int primary key auto_increment comment 'log_login的主键',
+login_user  varchar(100) not null comment '登陆账号',
+login_action varchar(50) not null comment '动作：login,登陆;logout,注销',
+login_time datetime default CURRENT_TIMESTAMP comment '发送时间',
+login_status char comment '登陆状态:0,成功;1,失败',
+login_address varchar(50) comment '登陆IP地址'
+)comment '登陆日志表';
+

@@ -1,0 +1,27 @@
+#关于自动解除账号冻结的函数
+CREATE PROCEDURE unFreeze()
+BEGIN
+update yh_user SET yh_status='0',yh_wrongTimes=0 WHERE yh_status='1' and (TIME_TO_SEC(now())-TIME_TO_SEC(yh_wrongDate))/60>=5;
+END;
+
+#调用unFreeze函数的事件
+create event if not exists is_unFreeze
+on schedule every 10 second
+on completion preserve
+do call unFreeze() ;
+
+#开启调用解除账号冻结函数的事件
+alter event is_unFreeze ON
+COMPLETION PRESERVE ENABLE;
+
+#关闭调用解除账号冻结函数的事件
+-- alter event is_unFreeze ON
+-- COMPLETION PRESERVE DISABLE;
+
+-- show events;
+-- show variables like 'event_scheduler';
+-- SELECT * FROM information_schema.EVENTS;
+#删除事件
+-- DROP EVENT  is_unFreeze;
+#删除函数
+-- DROP PROCEDURE unFreeze;

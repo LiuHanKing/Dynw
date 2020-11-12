@@ -1,0 +1,26 @@
+-- 创建trigger_info触发器,当有新用户时，插入此表
+create trigger trigger_info
+after #是在yh_user表上创建触发器t1，当yh_user表插入数据之后触发
+insert        #在创建触发器trigger_info，在内存数据持久化到磁盘，insert yh_user 表之后操作
+on yh_user
+for each row
+begin
+    insert into yh_info (yh_id,email,yhbh,yname) values(new.yh_id,new.yh_email,new.yh_yhbh,new.yh_yname);
+end;
+
+
+-- 创建trigger_yh_user触发器,当有用户信息表有数据被修改时时，修改用户表相关字段
+create trigger trigger_yh_user
+after #是在yh_user表上创建触发器t1，当yh_info表修改数据之后触发
+update        #在创建触发器trigger_info，在内存数据持久化到磁盘，update yh_info 表之后操作
+on yh_info
+for each row
+begin
+    update yh_user set yh_yname=new.yname where yh_id=new.yh_id;
+end;
+
+-- 查看触发器
+SELECT * FROM information_schema.`TRIGGERS`;
+-- 删除触发器
+-- drop trigger  trigger_info;
+-- drop trigger  trigger_yh_user;
